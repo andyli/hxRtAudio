@@ -1,0 +1,50 @@
+<xml>
+	<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+	
+	<set name="RTAUDIO_DIR" value="rtaudio-4.0.7" />
+	
+	<files id="rt_Files">
+		<file name="api.cpp"/>
+		
+		<file name="${RTAUDIO_DIR}/RtAudio.cpp" />
+		<file name="${RTAUDIO_DIR}/include/asio.cpp" />
+		<file name="${RTAUDIO_DIR}/include/asiodrivers.cpp" />
+		<file name="${RTAUDIO_DIR}/include/asiolist.cpp" />
+		<file name="${RTAUDIO_DIR}/include/iasiothiscallresolver.cpp" />
+		
+		<compilerflag value = "-I${RTAUDIO_DIR}" />
+		<compilerflag value = "-I${RTAUDIO_DIR}/include" />
+		
+		<compilerflag value = "-D__WIN32__" if="windows"/>
+		<compilerflag value = "-DWIN32" if="windows"/>
+		<compilerflag value = "-DNDEBUG" if="windows"/>
+		<compilerflag value = "-D_CONSOLE" if="windows"/>
+		<compilerflag value = "-D__WINDOWS_DS__" if="windows"/>
+		<compilerflag value = "-D__WINDOWS_ASIO__" if="windows"/>
+	</files>
+	
+	<target id="hxRtAudio.ndll" tool="linker" toolid="dll" output="hxRtAudio">
+		<files id="rt_Files"/>
+		<ext value=".ndll"/>
+		<outdir name="../ndll/${BINDIR}"/>
+		
+		<lib name="${LIB_LINK}"/>
+		<lib name="kernel32.lib" if="windows"/> 
+		<lib name="user32.lib" if="windows"/>
+		<lib name="gdi32.lib" if="windows"/>
+		<lib name="winspool.lib" if="windows"/>
+		<lib name="comdlg32.lib" if="windows"/>
+		<lib name="advapi32.lib" if="windows"/>
+		<lib name="shell32.lib" if="windows"/>
+		<lib name="ole32.lib" if="windows"/>
+		<lib name="oleaut32.lib" if="windows"/>
+		<lib name="uuid.lib" if="windows"/>
+		<lib name="odbc32.lib" if="windows"/>
+		<lib name="odbccp32.lib" if="windows"/>
+		<lib name="dsound.lib" if="windows"/>
+	</target>
+
+	<target id="default">
+		<target id="hxRtAudio.ndll"/>
+	</target>
+</xml>
