@@ -77,55 +77,25 @@ class RtAudio
 	public function showWarnings(value:Bool = true):Void {
 		_RtAudio_showWarnings(handle, value);
 	}
-	
+		
 	public function openStream(
 		outputParameters:Null<StreamParameters>,
 		inputParameters:Null<StreamParameters>,
 		format:Int /*RtAudioFormat*/,
 		sampleRate:Int,
 		bufferFrames:Int,
+		streamCallback:RtAudioCallback,
 		?userData:Dynamic = null,
 		?options:StreamOptions = null
 	):Void {
-		if (outputParameters != null) {
-			outputBuffer = switch(format) {
-				case	RtAudioFormat.RTAUDIO_SINT8,
-						RtAudioFormat.RTAUDIO_SINT16,
-						RtAudioFormat.RTAUDIO_SINT24,
-						RtAudioFormat.RTAUDIO_SINT32: cast new Array<Int>();
-						
-				case	RtAudioFormat.RTAUDIO_FLOAT32,
-						RtAudioFormat.RTAUDIO_FLOAT64: cast new Array<Float>();
-						
-				default: throw "unknown RtAudioFormat";
-			}
-			
-			for (i in 0...bufferFrames * outputParameters.nChannels)
-				outputBuffer.push(0);
-			
-		} else {
-			outputBuffer = null;
-		}
-		
-		if (inputParameters != null) {
-			inputBuffer = switch(format) {
-				case	RtAudioFormat.RTAUDIO_SINT8,
-						RtAudioFormat.RTAUDIO_SINT16,
-						RtAudioFormat.RTAUDIO_SINT24,
-						RtAudioFormat.RTAUDIO_SINT32: cast new Array<Int>();
-						
-				case	RtAudioFormat.RTAUDIO_FLOAT32,
-						RtAudioFormat.RTAUDIO_FLOAT64: cast new Array<Float>();
-						
-				default: throw "unknown RtAudioFormat";
-			}
-			
-			for (i in 0...bufferFrames * inputParameters.nChannels)
-				inputBuffer.push(0);
-			
-		} else {
-			inputBuffer = null;
-		}
+		this.outputParameters = outputParameters;
+		this.inputParameters = inputParameters;
+		this.format = format;
+		this.sampleRate = sampleRate;
+		this.bufferFrames = bufferFrames;
+		this.streamCallback = streamCallback;
+		this.userData = userData;
+		this.options = options;
 		
 		_RtAudio_openStream( 
 			handle,
@@ -140,23 +110,60 @@ class RtAudio
 				options:options
 			}
 		);
+		
+		if (outputParameters != null) {
+			switch(format) {
+				case	RtAudioFormat.RTAUDIO_SINT8,
+						RtAudioFormat.RTAUDIO_SINT16,
+						RtAudioFormat.RTAUDIO_SINT24,
+						RtAudioFormat.RTAUDIO_SINT32: outputBuffer = new Array<Int>();
+						
+				case	RtAudioFormat.RTAUDIO_FLOAT32,
+						RtAudioFormat.RTAUDIO_FLOAT64: outputBuffer = new Array<Float>();
+						
+				default: throw "unknown RtAudioFormat";
+			}
+			
+			for (i in 0...this.bufferFrames * outputParameters.nChannels)
+				outputBuffer.push(0);
+			
+		} else {
+			outputBuffer = null;
+		}
+		
+		if (inputParameters != null) {
+			switch(format) {
+				case	RtAudioFormat.RTAUDIO_SINT8,
+						RtAudioFormat.RTAUDIO_SINT16,
+						RtAudioFormat.RTAUDIO_SINT24,
+						RtAudioFormat.RTAUDIO_SINT32: inputBuffer = new Array<Int>();
+						
+				case	RtAudioFormat.RTAUDIO_FLOAT32,
+						RtAudioFormat.RTAUDIO_FLOAT64: inputBuffer = new Array<Float>();
+						
+				default: throw "unknown RtAudioFormat";
+			}
+			
+			for (i in 0...this.bufferFrames * inputParameters.nChannels)
+				inputBuffer.push(0);
+			
+		} else {
+			inputBuffer = null;
+		}
 	}
 	
 	public var handle(default, null):Dynamic;
-	public var streamCallback:RtAudioCallback;
-	var outputBuffer:Dynamic;
-	var inputBuffer:Dynamic;
-	
-	public function callStreamCallback( args:{
-		outputBuffer:Dynamic,
-		inputBuffer:Dynamic,
-		nFrames:Int,
-		streamTime:Float,
-		status:Int,
-		userData:Dynamic
-	}):Int {
-		return streamCallback(args.outputBuffer, args.inputBuffer, args.nFrames, args.streamTime, args.status, args.userData);
-	}
+	public var streamCallback(default, null):RtAudioCallback;
+	public var outputParameters(default, null):Null<StreamParameters>;
+	public var inputParameters(default, null):Null<StreamParameters>;
+	public var format(default, null):Int /*RtAudioFormat*/;
+	public var sampleRate(default, null):Int;
+	public var bufferFrames(default, null):Int;
+	public var userData(default, null):Dynamic;
+	public var options(default, null):Null<StreamOptions>;
+	public var status(default, null):Int;
+	public var outputBuffer(default, null):Dynamic;
+	public var inputBuffer(default, null):Dynamic;
 	
 	static var _RtAudio_getCompiledApi:Void->Array<Dynamic> = Lib.load("hxRtAudio", "_RtAudio_getCompiledApi", 0);
 	static var _RtAudio_new = Lib.load("hxRtAudio", "_RtAudio_new", 1);

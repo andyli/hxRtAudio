@@ -4,21 +4,17 @@
 #include <vector>
 #include "RtAudio.h"
 
-struct UserData {
-	value userData;
-	value rtAudioHandle;
-	RtAudio::StreamParameters * outputParameters;
-	RtAudio::StreamParameters * inputParameters;
-	int format;
-};
-
 const int id_outputBuffer = val_id("outputBuffer");
 const int id_inputBuffer = val_id("inputBuffer");
 const int id_nFrames = val_id("nFrames");
 const int id_streamTime = val_id("streamTime");
 const int id_status = val_id("status");
 const int id_userData = val_id("userData");
-const int id_callStreamCallback = val_id("callStreamCallback");
+const int id_streamCallback = val_id("streamCallback");
+const int id_inputParameters = val_id("inputParameters");
+const int id_outputParameters = val_id("outputParameters");
+const int id_nChannels = val_id("nChannels");
+const int id_format = val_id("format");
 
 int callback
 (
@@ -29,19 +25,18 @@ int callback
 	RtAudioStreamStatus status,
 	void *data
 ) {
+	value rtAudioHandle = (value) data;
 
-	UserData* userData = (UserData*) data;
-	value rtAudioHandle = userData->rtAudioHandle;
-
-	value args = alloc_empty_object();
-	
 	value outAry = val_field(rtAudioHandle, id_outputBuffer);
-
 	value inAry = val_field(rtAudioHandle, id_inputBuffer);
+	int format = val_field_numeric(rtAudioHandle, id_format);
+	
+	alloc_field(rtAudioHandle, id_status, alloc_int(status));
+	
 	if (inputBuffer){
-		unsigned int inAryLen = nFrames * userData->inputParameters->nChannels;
+		unsigned int inAryLen = nFrames * val_field_numeric(val_field(rtAudioHandle, id_inputParameters), id_nChannels);
 		
-		switch(userData->format) {
+		switch(format) {
 			case RTAUDIO_SINT8:
 			{
 				char* input = (char*) inputBuffer;
@@ -87,20 +82,13 @@ int callback
 				;
 		}
 	}
-	
-	alloc_field(args,id_outputBuffer,outAry);
-	alloc_field(args,id_inputBuffer,inAry);
-	alloc_field(args,id_nFrames,alloc_int(nFrames));
-	alloc_field(args,id_streamTime,alloc_float(streamTime));
-	alloc_field(args,id_status,alloc_int(status));
-	alloc_field(args,id_userData,userData->userData);
 
-	int returnVal = val_int(val_ocall1(rtAudioHandle, id_callStreamCallback, args));
+	int returnVal = val_int(val_ocall1(rtAudioHandle, id_streamCallback, rtAudioHandle));
 	
 	if (outputBuffer){
-		unsigned int outAryLen = nFrames * userData->outputParameters->nChannels;
+		unsigned int outAryLen = nFrames * val_field_numeric(val_field(rtAudioHandle, id_outputParameters), id_nChannels);
 		
-		switch(userData->format) {
+		switch(format) {
 			case RTAUDIO_SINT8:
 			{
 				char* out = (char*) outputBuffer;
@@ -323,13 +311,6 @@ value _RtAudio_openStream(value a,value b,value c) {
 	int format = val_field_numeric(c, val_id("format"));
 	int sampleRate = val_field_numeric(c, val_id("sampleRate"));
 	unsigned int bufferFrames = val_field_numeric(c, val_id("bufferFrames"));
-	
-	UserData* userData = new UserData();
-	userData->userData = val_field(c, val_id("userData"));
-	userData->rtAudioHandle = b;
-	userData->outputParameters = outputParameters;
-	userData->inputParameters = inputParameters;
-	userData->format = format;
 
 	value optionsHandle = val_field(c, val_id("options"));
 	RtAudio::StreamOptions * options = NULL;
@@ -348,13 +329,22 @@ value _RtAudio_openStream(value a,value b,value c) {
 			sampleRate,
 			&bufferFrames,
 			&callback,
-			userData,
+			b,
 			options
 		);
 	} catch (RtError &error) {
 		error.printMessage();
 		//std::exit(EXIT_FAILURE); // need case here
 	}
+	
+	alloc_field(b, val_id("bufferFrames"), alloc_int(bufferFrames));
+	
+	if(!val_is_null(optionsHandle)){
+		alloc_field(optionsHandle, val_id("numberOfBuffers"), alloc_int(options->numberOfBuffers));
+	}
+	
+	delete outputParameters;
+	delete inputParameters;
 	
 	return alloc_null();
 }

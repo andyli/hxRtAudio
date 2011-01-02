@@ -11,4 +11,4 @@
 -cmd xcopy /e /i /y "ndll\Windows\*.*" "bin"
 
 -cmd cd bin
--cmd Main.exe
+-cmd Main.exe 1 44100
