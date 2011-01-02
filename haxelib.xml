@@ -1,0 +1,7 @@
+<project name="hxRtAudio" url="http://github.com/andyli/hxRtAudio" license="BSD">
+    <user name="andyli"/>
+    <tag v="cpp"/>
+    <tag v="audio"/>
+    <description>haXe binding to RtAudio, for cross-platform real-time audio input/output.</description>
+    <version name="4.0.7.0">First release.</version>
+</project>

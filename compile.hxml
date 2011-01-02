@@ -7,7 +7,7 @@
 -lib hxcpp
 #-debug
 
-#-cmd xcopy /e /i /y "ndll\Windows\*.*" "bin"
+-cmd xcopy /e /i /y "ndll\Windows\*.*" "bin"
 
 -cmd cd bin
 -cmd Main.exe

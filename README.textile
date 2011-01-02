@@ -1,0 +1,9 @@
+h1. hxRtAudio
+
+"haXe":http://haxe.org/ binding to "RtAudio":http://www.music.mcgill.ca/~gary/rtaudio/, for cross-platform real-time audio input/output.
+
+Supports c++ target on Windows only. Mac/Linux support is planned.
+
+h2. Usage
+
+There are several examples under the package @rtAudio.tests@.
