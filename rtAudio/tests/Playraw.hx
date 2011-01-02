@@ -69,7 +69,7 @@ class Playraw
 	
 	static var dac:RtAudio;
 	
-	static public function main() 
+	static public function main():Void
 	{
 		var channels:Int, fs:Int, bufferFrames:Int, device:Int = 0, offset:Int = 0;
 		var file:String;
@@ -109,11 +109,11 @@ class Playraw
 
 		dac.openStream( oParams, null, RtAudioFormat.RTAUDIO_SINT16, fs, bufferFrames, output, data );
 		
-		if (!dac.isStreamOpen()) return 0;
+		if (!dac.isStreamOpen()) return;
 		
 		dac.startStream();
 		
-		if (!dac.isStreamRunning()) return 0;
+		if (!dac.isStreamRunning()) return;
 
 		Lib.println("\nPlaying raw file " + file + " (buffer frames = " + bufferFrames + ").");
 		while ( dac.isStreamRunning() ) {
@@ -122,8 +122,6 @@ class Playraw
 
 		data.fd.close();
 		dac.closeStream();
-
-		return 0;
 	}
 	
 }

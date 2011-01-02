@@ -64,7 +64,7 @@ class Record
 	
 	static var adc = new RtAudio();
 	
-	static public function main() 
+	static public function main():Void
 	{		
 		var channels:Int, fs:Int, bufferFrames:Int, device:Int = 0, offset:Int = 0;
 		var time:Float = 2.0;
@@ -109,7 +109,7 @@ class Record
 		
 		adc.openStream( null, iParams, RtAudioFormat.RTAUDIO_SINT16, fs, bufferFrames, input, data );
 		
-		if (!adc.isStreamOpen()) return 0;
+		if (!adc.isStreamOpen()) return;
 
 		data.totalFrames = cast fs * time;
 		data.frameCounter = 0;
@@ -117,7 +117,7 @@ class Record
 
 		adc.startStream();
 		
-		if (!adc.isStreamRunning()) return 0;
+		if (!adc.isStreamRunning()) return;
 
 		Lib.println( "\nRecording for " + time + " seconds ... writing file 'record.raw' (buffer frames = " + bufferFrames + ")." );
 		while ( adc.isStreamRunning() ) {
@@ -135,8 +135,6 @@ class Record
 		fd.close();
 
 		if (adc.isStreamOpen()) adc.closeStream();
-
-		return 0;
 	}
 	
 }

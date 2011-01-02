@@ -315,6 +315,7 @@ value _RtAudio_openStream(value a,value b,value c) {
 	value optionsHandle = val_field(c, val_id("options"));
 	RtAudio::StreamOptions * options = NULL;
 	if(!val_is_null(optionsHandle)){
+		options = new RtAudio::StreamOptions();
 		options->flags = val_field_numeric(optionsHandle, val_id("flags"));
 		options->numberOfBuffers = val_field_numeric(optionsHandle, val_id("numberOfBuffers"));
 		options->streamName = val_string(val_field(optionsHandle, val_id("streamName")));
@@ -339,12 +340,13 @@ value _RtAudio_openStream(value a,value b,value c) {
 	
 	alloc_field(b, val_id("bufferFrames"), alloc_int(bufferFrames));
 	
-	if(!val_is_null(optionsHandle)){
+	if(options){
 		alloc_field(optionsHandle, val_id("numberOfBuffers"), alloc_int(options->numberOfBuffers));
+		delete options;
 	}
 	
-	delete outputParameters;
-	delete inputParameters;
+	if (outputParameters) delete outputParameters;
+	if (inputParameters) delete inputParameters;
 	
 	return alloc_null();
 }
