@@ -1,14 +1,13 @@
--cmd cd project
--cmd haxelib run hxcpp build.xml
--cmd cd ..
+#-cmd cd project
+#-cmd haxelib run hxcpp build.xml
+#-cmd cd ..
 
 -cpp bin
 -main Main
 -lib hxcpp
 #-debug
-#-D HXCPP_MULTI_THREADED
 
--cmd xcopy /e /i /y "ndll\Windows\*.*" "bin"
+#-cmd xcopy /e /i /y "ndll\Windows\*.*" "bin"
 
 -cmd cd bin
--cmd Main.exe 1 44100
+-cmd Main.exe
