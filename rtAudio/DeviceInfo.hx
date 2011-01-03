@@ -10,5 +10,5 @@ typedef DeviceInfo =
 	var isDefaultOutput:Bool;
 	var isDefaultInput:Bool;
 	var sampleRates:Array<Int>;
-	var nativeFormats:Int;
+	var nativeFormats:Array<RtAudioFormat>;
 }

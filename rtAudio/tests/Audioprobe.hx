@@ -55,23 +55,21 @@ class Audioprobe
 				else 
 					Lib.println("This is NOT the default input device.");
 				
-				if ( info.nativeFormats == 0 )
+				if ( info.nativeFormats.length == 0 )
 					Lib.println("No natively supported data formats(?)!");
 				else {
 					Lib.println("Natively supported data formats:");
 					
-					if ( info.nativeFormats & RtAudioFormat.RTAUDIO_SINT8 > 0 )
-						Lib.println("  8-bit int");
-					if ( info.nativeFormats & RtAudioFormat.RTAUDIO_SINT16 > 0 )
-						Lib.println("  16-bit int");
-					if ( info.nativeFormats & RtAudioFormat.RTAUDIO_SINT24 > 0 )
-						Lib.println("  24-bit int");
-					if ( info.nativeFormats & RtAudioFormat.RTAUDIO_SINT32 > 0 )
-						Lib.println("  32-bit int");
-					if ( info.nativeFormats & RtAudioFormat.RTAUDIO_FLOAT32 > 0 )
-						Lib.println("  32-bit float");
-					if ( info.nativeFormats & RtAudioFormat.RTAUDIO_FLOAT64 > 0 )
-						Lib.println("  64-bit float");
+					for (format in info.nativeFormats) {
+						switch (format) {
+							case RTAUDIO_SINT8: Lib.println("  8-bit int");
+							case RTAUDIO_SINT16: Lib.println("  16-bit int");
+							case RTAUDIO_SINT24: Lib.println("  24-bit int");
+							case RTAUDIO_SINT32: Lib.println("  32-bit int");
+							case RTAUDIO_FLOAT32: Lib.println("  32-bit float");
+							case RTAUDIO_FLOAT64: Lib.println("  64-bit float");
+						}
+					}
 				}
 				
 				if ( info.sampleRates.length < 1 )

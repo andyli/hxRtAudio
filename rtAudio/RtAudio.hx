@@ -3,6 +3,7 @@ package rtAudio;
 import cpp.Lib;
 import cpp.vm.Gc;
 import rtAudio.Api;
+import rtAudio.RtAudioFormat;
 
 class RtAudio 
 {	
@@ -27,7 +28,25 @@ class RtAudio
 	}
 	
 	public function getDeviceInfo(device:Int):DeviceInfo {
-		return _RtAudio_getDeviceInfo(handle, device);
+		var info:Dynamic = _RtAudio_getDeviceInfo(handle, device);
+		
+		var nativeFormatsBitMask:Int = info.nativeFormats;
+		var nativeFormats = [];
+		if ( nativeFormatsBitMask & RtAudioFormatValue.RTAUDIO_SINT8 > 0 )
+			nativeFormats.push(RTAUDIO_SINT8);
+		if ( nativeFormatsBitMask & RtAudioFormatValue.RTAUDIO_SINT16 > 0 )
+			nativeFormats.push(RTAUDIO_SINT16);
+		if ( nativeFormatsBitMask & RtAudioFormatValue.RTAUDIO_SINT24 > 0 )
+			nativeFormats.push(RTAUDIO_SINT24);
+		if ( nativeFormatsBitMask & RtAudioFormatValue.RTAUDIO_SINT32 > 0 )
+			nativeFormats.push(RTAUDIO_SINT32);
+		if ( nativeFormatsBitMask & RtAudioFormatValue.RTAUDIO_FLOAT32 > 0 )
+			nativeFormats.push(RTAUDIO_FLOAT32);
+		if ( nativeFormatsBitMask & RtAudioFormatValue.RTAUDIO_FLOAT64 > 0 )
+			nativeFormats.push(RTAUDIO_FLOAT64);
+		
+		info.nativeFormats = nativeFormats;
+		return info;
 	}
 	
 	public function getDefaultOutputDevice():Int {
@@ -81,7 +100,7 @@ class RtAudio
 	public function openStream(
 		outputParameters:Null<StreamParameters>,
 		inputParameters:Null<StreamParameters>,
-		format:Int /*RtAudioFormat*/,
+		format:RtAudioFormat,
 		sampleRate:Int,
 		bufferFrames:Int,
 		streamCallback:RtAudioCallback,
@@ -113,13 +132,13 @@ class RtAudio
 		
 		if (outputParameters != null) {
 			switch(format) {
-				case	RtAudioFormat.RTAUDIO_SINT8,
-						RtAudioFormat.RTAUDIO_SINT16,
-						RtAudioFormat.RTAUDIO_SINT24,
-						RtAudioFormat.RTAUDIO_SINT32: outputBuffer = new Array<Int>();
+				case	RTAUDIO_SINT8,
+						RTAUDIO_SINT16,
+						//RTAUDIO_SINT24,
+						RTAUDIO_SINT32: outputBuffer = new Array<Int>();
 						
-				case	RtAudioFormat.RTAUDIO_FLOAT32,
-						RtAudioFormat.RTAUDIO_FLOAT64: outputBuffer = new Array<Float>();
+				case	RTAUDIO_FLOAT32,
+						RTAUDIO_FLOAT64: outputBuffer = new Array<Float>();
 						
 				default: throw "unknown RtAudioFormat";
 			}
@@ -133,15 +152,15 @@ class RtAudio
 		
 		if (inputParameters != null) {
 			switch(format) {
-				case	RtAudioFormat.RTAUDIO_SINT8,
-						RtAudioFormat.RTAUDIO_SINT16,
-						RtAudioFormat.RTAUDIO_SINT24,
-						RtAudioFormat.RTAUDIO_SINT32: inputBuffer = new Array<Int>();
+				case	RTAUDIO_SINT8,
+						RTAUDIO_SINT16,
+						//RTAUDIO_SINT24,
+						RTAUDIO_SINT32: inputBuffer = new Array<Int>();
 						
-				case	RtAudioFormat.RTAUDIO_FLOAT32,
-						RtAudioFormat.RTAUDIO_FLOAT64: inputBuffer = new Array<Float>();
+				case	RTAUDIO_FLOAT32,
+						RTAUDIO_FLOAT64: inputBuffer = new Array<Float>();
 						
-				default: throw "unknown RtAudioFormat";
+				default: throw "unsupported RtAudioFormat";
 			}
 			
 			for (i in 0...this.bufferFrames * inputParameters.nChannels)
@@ -156,7 +175,7 @@ class RtAudio
 	public var streamCallback(default, null):RtAudioCallback;
 	public var outputParameters(default, null):Null<StreamParameters>;
 	public var inputParameters(default, null):Null<StreamParameters>;
-	public var format(default, null):Int /*RtAudioFormat*/;
+	public var format(default, null):RtAudioFormat;
 	public var sampleRate(default, null):Int;
 	public var bufferFrames(default, null):Int;
 	public var userData(default, null):Dynamic;

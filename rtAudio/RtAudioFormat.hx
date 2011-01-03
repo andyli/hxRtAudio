@@ -1,6 +1,18 @@
 package rtAudio;
 
-class RtAudioFormat {
+enum RtAudioFormat {
+	RTAUDIO_SINT8;    // 8-bit signed integer.
+	RTAUDIO_SINT16;   // 16-bit signed integer.
+	RTAUDIO_SINT24;   // Lower 3 bytes of 32-bit signed integer. Not supported in hxRtAudio.
+	RTAUDIO_SINT32;   // 32-bit signed integer.
+	RTAUDIO_FLOAT32;  // Normalized between plus/minus 1.0.
+	RTAUDIO_FLOAT64;  // Normalized between plus/minus 1.0.
+}
+
+/**
+ * These are the real value exist in the original rtAudio.
+ */
+class RtAudioFormatValue {
 	inline static public var RTAUDIO_SINT8 = 0x1;    // 8-bit signed integer.
 	inline static public var RTAUDIO_SINT16 = 0x2;   // 16-bit signed integer.
 	inline static public var RTAUDIO_SINT24 = 0x4;   // Lower 3 bytes of 32-bit signed integer.
