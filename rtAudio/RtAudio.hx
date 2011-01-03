@@ -4,6 +4,7 @@ import cpp.Lib;
 import cpp.vm.Gc;
 import rtAudio.Api;
 import rtAudio.RtAudioFormat;
+import rtAudio.RtAudioStreamFlags;
 
 class RtAudio 
 {	
@@ -105,7 +106,7 @@ class RtAudio
 		bufferFrames:Int,
 		streamCallback:RtAudioCallback,
 		?userData:Dynamic = null,
-		?options:StreamOptions = null
+		?options:Null<StreamOptions> = null
 	):Void {
 		this.outputParameters = outputParameters;
 		this.inputParameters = inputParameters;
@@ -116,17 +117,41 @@ class RtAudio
 		this.userData = userData;
 		this.options = options;
 		
+		var optionsValue:Dynamic = options == null ? null : Reflect.copy(options);
+		if (options != null) {
+			var flagsValue = 0;
+			for (flag in options.flags) {
+				flagsValue = switch(flag) {
+					case RTAUDIO_NONINTERLEAVED:	flagsValue | RtAudioStreamFlagsValue.RTAUDIO_NONINTERLEAVED;
+					case RTAUDIO_MINIMIZE_LATENCY:	flagsValue | RtAudioStreamFlagsValue.RTAUDIO_MINIMIZE_LATENCY;
+					case RTAUDIO_HOG_DEVICE:		flagsValue | RtAudioStreamFlagsValue.RTAUDIO_HOG_DEVICE;
+					case RTAUDIO_SCHEDULE_REALTIME:	flagsValue | RtAudioStreamFlagsValue.RTAUDIO_SCHEDULE_REALTIME;
+				}
+			}
+			optionsValue.flags = flagsValue;
+		}
+		
+		formatValue = switch (format) {
+			case RTAUDIO_SINT8: RtAudioFormatValue.RTAUDIO_SINT8;
+			case RTAUDIO_SINT16: RtAudioFormatValue.RTAUDIO_SINT16;
+			//case RTAUDIO_SINT24: RtAudioFormatValue.RTAUDIO_SINT24;
+			case RTAUDIO_SINT32: RtAudioFormatValue.RTAUDIO_SINT32;
+			case RTAUDIO_FLOAT32: RtAudioFormatValue.RTAUDIO_FLOAT32;
+			case RTAUDIO_FLOAT64: RtAudioFormatValue.RTAUDIO_FLOAT64;
+			default: throw "unsupported format";
+		}
+		
 		_RtAudio_openStream( 
 			handle,
 			this,
 			{
 				outputParameters:outputParameters,
 				inputParameters:inputParameters,
-				format:format,
+				format:formatValue,
 				sampleRate:sampleRate,
 				bufferFrames:bufferFrames,
 				userData:userData,
-				options:options
+				options:optionsValue
 			}
 		);
 		
@@ -169,13 +194,17 @@ class RtAudio
 		} else {
 			inputBuffer = null;
 		}
+		
+		if (options != null) {
+			options.numberOfBuffers = optionsValue.numberOfBuffers;
+		}
 	}
 	
 	public var handle(default, null):Dynamic;
 	public var streamCallback(default, null):RtAudioCallback;
 	public var outputParameters(default, null):Null<StreamParameters>;
 	public var inputParameters(default, null):Null<StreamParameters>;
-	public var format(default, null):RtAudioFormat;
+	public var format(default, null):RtAudioFormat; var formatValue(default, null):Int;
 	public var sampleRate(default, null):Int;
 	public var bufferFrames(default, null):Int;
 	public var userData(default, null):Dynamic;

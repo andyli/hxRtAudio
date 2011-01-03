@@ -141,13 +141,13 @@ class Testall
 		};
 
 		var options = {
-			flags:RtAudioStreamFlags.RTAUDIO_HOG_DEVICE,
+			flags:[RTAUDIO_HOG_DEVICE],
 			numberOfBuffers:0,
 			streamName:"",
 			priority:0
 		}
 		
-		dac.openStream( oParams, null, RtAudioFormat.RTAUDIO_FLOAT64, fs, bufferFrames, sawi, data, options );
+		dac.openStream( oParams, null, RTAUDIO_FLOAT64, fs, bufferFrames, sawi, data, options );
 		Lib.println("\nStream latency = " + dac.getStreamLatency());
 
 		// Start the stream
@@ -179,7 +179,7 @@ class Testall
 		if ( dac.isStreamOpen() ) dac.closeStream();
 
 		// Test non-interleaved functionality
-		options.flags = RtAudioStreamFlags.RTAUDIO_NONINTERLEAVED;
+		options.flags = [RtAudioStreamFlags.RTAUDIO_NONINTERLEAVED];
 
 		dac.openStream( oParams, null, RtAudioFormat.RTAUDIO_FLOAT64, fs, bufferFrames, sawni, data, options );
 
@@ -200,7 +200,7 @@ class Testall
 			nChannels:channels,
 			firstChannel:iOffset
 		};
-		options.flags = RtAudioStreamFlags.RTAUDIO_NONINTERLEAVED;
+		options.flags = [RtAudioStreamFlags.RTAUDIO_NONINTERLEAVED];
 
 		dac.openStream( oParams, iParams, RtAudioFormat.RTAUDIO_SINT32, fs, bufferFrames, inout, bufferBytes, options );
 

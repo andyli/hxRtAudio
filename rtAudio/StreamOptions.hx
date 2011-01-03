@@ -2,7 +2,7 @@ package rtAudio;
 
 typedef StreamOptions =
 {
-	var flags:Int /* RtAudioStreamFlags */;
+	var flags:Array<RtAudioStreamFlags>;
 	var numberOfBuffers:Int;
 	var streamName:String;
 	var priority:Int;

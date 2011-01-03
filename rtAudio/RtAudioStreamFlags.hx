@@ -1,6 +1,17 @@
 package rtAudio;
 
-class RtAudioStreamFlags 
+enum RtAudioStreamFlags 
+{
+	RTAUDIO_NONINTERLEAVED;    // Use non-interleaved buffers (default = interleaved).
+	RTAUDIO_MINIMIZE_LATENCY;  // Attempt to set stream parameters for lowest possible latency.
+	RTAUDIO_HOG_DEVICE;        // Attempt grab device and prevent use by others.
+	RTAUDIO_SCHEDULE_REALTIME; // Try to select realtime scheduling for callback thread.
+}
+
+/**
+ * These are the real value exist in the original rtAudio.
+ */
+class RtAudioStreamFlagsValue
 {
 	inline static public var RTAUDIO_NONINTERLEAVED = 0x1;    // Use non-interleaved buffers (default = interleaved).
 	inline static public var RTAUDIO_MINIMIZE_LATENCY = 0x2;  // Attempt to set stream parameters for lowest possible latency.

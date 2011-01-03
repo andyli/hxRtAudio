@@ -14,7 +14,7 @@ const int id_streamCallback = val_id("streamCallback");
 const int id_inputParameters = val_id("inputParameters");
 const int id_outputParameters = val_id("outputParameters");
 const int id_nChannels = val_id("nChannels");
-const int id_format = val_id("format");
+const int id_formatValue = val_id("formatValue");
 
 int callback
 (
@@ -29,7 +29,7 @@ int callback
 
 	value outAry = val_field(rtAudioHandle, id_outputBuffer);
 	value inAry = val_field(rtAudioHandle, id_inputBuffer);
-	int format = val_field_numeric(rtAudioHandle, id_format);
+	int format = val_field_numeric(rtAudioHandle, id_formatValue);
 	
 	alloc_field(rtAudioHandle, id_status, alloc_int(status));
 	

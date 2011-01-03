@@ -1,6 +1,6 @@
-#-cmd cd project
-#-cmd haxelib run hxcpp build.xml
-#-cmd cd ..
+-cmd cd project
+-cmd haxelib run hxcpp build.xml
+-cmd cd ..
 
 -cpp bin
 -main Main
@@ -10,4 +10,4 @@
 -cmd xcopy /e /i /y "ndll\Windows\*.*" "bin"
 
 -cmd cd bin
--cmd Main.exe
+-cmd Main.exe 2 44100
