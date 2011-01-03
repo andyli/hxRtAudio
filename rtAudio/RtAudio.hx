@@ -1,7 +1,6 @@
 package rtAudio;
 
 import cpp.Lib;
-import cpp.vm.Gc;
 import rtAudio.Api;
 import rtAudio.RtAudioFormat;
 import rtAudio.RtAudioStreamFlags;
