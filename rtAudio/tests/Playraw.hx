@@ -4,9 +4,9 @@
  * playraw.cpp
  * by Gary P. Scavone, 2007
  * 
- * Play a specified raw file.  It is necessary
+ * <p>Play a specified raw file.  It is necessary
  * that the file be of the same data format as
- * defined below.
+ * defined below.</p>
  */
 
 package rtAudio.tests;
@@ -19,11 +19,6 @@ import haxe.io.Eof;
 import rtAudio.RtAudio;
 import rtAudio.Api;
 import rtAudio.RtAudioFormat;
-
-typedef OutputData = {
-  var fd:FileInput;
-  var channels:Int;
-};
 
 class Playraw 
 {
@@ -125,3 +120,8 @@ class Playraw
 	}
 	
 }
+
+typedef OutputData = {
+  var fd:FileInput;
+  var channels:Int;
+};

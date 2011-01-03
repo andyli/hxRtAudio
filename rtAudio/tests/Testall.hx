@@ -4,8 +4,8 @@
  * testall.cpp
  * by Gary P. Scavone, 2007-2008
  * 
- * This program will make a variety of calls
- * to extensively test RtAudio functionality.
+ * <p>This program will make a variety of calls
+ * to extensively test RtAudio functionality.</p>
  */
 
 package rtAudio.tests;

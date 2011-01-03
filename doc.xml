@@ -1,0 +1,2201 @@
+<haxe>
+	<class path="Enum" params="T" file="D:\haxe/std/Enum.hx" extern="1"><haxe_doc>
+	An abstract type that represents an Enum.
+	See [Type] for the haXe Reflection API.
+</haxe_doc></class>
+	<typedef path="cpp.io.FileHandle" params="" file="D:\repo\hxcpp/cpp/io/File.hx" module="cpp.io.File"><d/></typedef>
+	<enum path="cpp.io.FileSeek" params="" file="D:\repo\hxcpp/cpp/io/File.hx" module="cpp.io.File">
+		<SeekEnd/>
+		<SeekCur/>
+		<SeekBegin/>
+	</enum>
+	<class path="cpp.Lib" params="" file="D:\haxe/std/cpp/Lib.hx">
+		<load public="1" set="method" line="32" static="1">
+			<f a="lib:prim:nargs">
+				<c path="String"/>
+				<c path="String"/>
+				<c path="Int"/>
+				<d/>
+			</f>
+			<haxe_doc>
+		Load and return a Cpp primitive from a DLL library.
+	</haxe_doc>
+		</load>
+		<loadLazy public="1" set="method" line="44" static="1">
+			<f a="lib:prim:nargs">
+				<unknown/>
+				<unknown/>
+				<c path="Int"/>
+				<d/>
+			</f>
+			<haxe_doc>
+		Tries to load, and always returns a valid function, but the function may throw
+		if called.
+	</haxe_doc>
+		</loadLazy>
+		<rethrow public="1" set="method" line="59" static="1"><f a="inExp">
+	<d/>
+	<e path="Void"/>
+</f></rethrow>
+		<stringReference public="1" set="method" line="61" static="1"><f a="inExp">
+	<d/>
+	<e path="Void"/>
+</f></stringReference>
+		<print public="1" set="method" line="66" static="1">
+			<f a="v">
+				<d/>
+				<e path="Void"/>
+			</f>
+			<haxe_doc>
+		Print the specified value on the default output.
+	</haxe_doc>
+		</print>
+		<haxeToNeko public="1" set="method" line="74" static="1">
+			<f a="v">
+				<d/>
+				<d/>
+			</f>
+			<haxe_doc>
+		This function is used to make porting from neko to cpp easy.
+		It does not need to do anything because the c-code can work with any Dynamic
+	</haxe_doc>
+		</haxeToNeko>
+		<nekoToHaxe public="1" set="method" line="82" static="1">
+			<f a="v">
+				<d/>
+				<d/>
+			</f>
+			<haxe_doc>
+		This function is used to make porting from neko to cpp easy.
+		It does not need to do anything because the c-code can work with any Dynamic
+	</haxe_doc>
+		</nekoToHaxe>
+		<println public="1" set="method" line="88" static="1">
+			<f a="v">
+				<d/>
+				<e path="Void"/>
+			</f>
+			<haxe_doc>
+		Print the specified value on the default output followed by a newline character.
+	</haxe_doc>
+		</println>
+	</class>
+	<class path="cpp.io.File" params="" file="D:\repo\hxcpp/cpp/io/File.hx">
+		<getContent public="1" set="method" line="25" static="1"><f a="path">
+	<c path="String"/>
+	<c path="String"/>
+</f></getContent>
+		<getBytes public="1" set="method" line="30" static="1"><f a="path">
+	<c path="String"/>
+	<c path="haxe.io.Bytes"/>
+</f></getBytes>
+		<read public="1" set="method" line="35" static="1"><f a="path:binary">
+	<c path="String"/>
+	<e path="Bool"/>
+	<c path="cpp.io.FileInput"/>
+</f></read>
+		<write public="1" set="method" line="39" static="1"><f a="path:binary">
+	<c path="String"/>
+	<e path="Bool"/>
+	<c path="cpp.io.FileOutput"/>
+</f></write>
+		<append public="1" set="method" line="43" static="1"><f a="path:binary">
+	<c path="String"/>
+	<e path="Bool"/>
+	<c path="cpp.io.FileOutput"/>
+</f></append>
+		<copy public="1" set="method" line="47" static="1"><f a="src:dst">
+	<c path="String"/>
+	<c path="String"/>
+	<e path="Void"/>
+</f></copy>
+		<stdin public="1" set="method" line="55" static="1"><f a=""><c path="cpp.io.FileInput"/></f></stdin>
+		<stdout public="1" set="method" line="59" static="1"><f a=""><c path="cpp.io.FileOutput"/></f></stdout>
+		<stderr public="1" set="method" line="63" static="1"><f a=""><c path="cpp.io.FileOutput"/></f></stderr>
+		<getChar public="1" set="method" line="67" static="1"><f a="echo">
+	<e path="Bool"/>
+	<c path="Int"/>
+</f></getChar>
+		<file_stdin line="71" static="1"><f a=""><t path="cpp.io.FileHandle"/></f></file_stdin>
+		<file_stdout line="72" static="1"><f a=""><t path="cpp.io.FileHandle"/></f></file_stdout>
+		<file_stderr line="73" static="1"><f a=""><t path="cpp.io.FileHandle"/></f></file_stderr>
+		<file_contents line="75" static="1"><f a="">
+	<c path="String"/>
+	<t path="haxe.io.BytesData"/>
+</f></file_contents>
+		<file_open line="76" static="1"><f a=":">
+	<c path="String"/>
+	<c path="String"/>
+	<t path="cpp.io.FileHandle"/>
+</f></file_open>
+		<getch line="78" static="1"><f a="">
+	<e path="Bool"/>
+	<c path="Int"/>
+</f></getch>
+		<haxe_doc>
+	API for reading and writing to files.
+</haxe_doc>
+	</class>
+	<enum path="rtAudio.Api" params="" file="rtAudio/Api.hx">
+		<WINDOWS_DS><haxe_doc>
+	 * The Microsoft Direct Sound API.
+	 </haxe_doc></WINDOWS_DS>
+		<WINDOWS_ASIO><haxe_doc>
+	 * The Steinberg Audio Stream I/O API.
+	 </haxe_doc></WINDOWS_ASIO>
+		<UNSPECIFIED><haxe_doc>
+	 * Search for a working compiled API.
+	 </haxe_doc></UNSPECIFIED>
+		<UNIX_JACK><haxe_doc>
+	 * The Jack Low-Latency Audio Server API.
+	 </haxe_doc></UNIX_JACK>
+		<RTAUDIO_DUMMY><haxe_doc>
+	 * A compilable but non-functional API.
+	 </haxe_doc></RTAUDIO_DUMMY>
+		<MACOSX_CORE><haxe_doc>
+	 * Macintosh OS-X Core Audio API.
+	 </haxe_doc></MACOSX_CORE>
+		<LINUX_OSS><haxe_doc>
+	 * The Linux Open Sound System API.
+	 </haxe_doc></LINUX_OSS>
+		<LINUX_ALSA><haxe_doc>
+	 * The Advanced Linux Sound Architecture API.
+	 </haxe_doc></LINUX_ALSA>
+		<haxe_doc>
+ * Audio API specifier.
+ </haxe_doc>
+	</enum>
+	<class path="haxe.io.BytesBuffer" params="" file="D:\haxe/std/haxe/io/BytesBuffer.hx">
+		<b><t path="haxe.io.BytesData"/></b>
+		<addByte public="1" get="inline" set="null" line="55"><f a="byte">
+	<c path="Int"/>
+	<e path="Void"/>
+</f></addByte>
+		<add public="1" get="inline" set="null" line="69"><f a="src">
+	<c path="haxe.io.Bytes"/>
+	<e path="Void"/>
+</f></add>
+		<addBytes public="1" get="inline" set="null" line="84"><f a="src:pos:len">
+	<c path="haxe.io.Bytes"/>
+	<c path="Int"/>
+	<c path="Int"/>
+	<e path="Void"/>
+</f></addBytes>
+		<getBytes public="1" set="method" line="106">
+			<f a=""><c path="haxe.io.Bytes"/></f>
+			<haxe_doc>
+		Returns either a copy or a reference of the current bytes.
+		Once called, the buffer can no longer be used.
+	</haxe_doc>
+		</getBytes>
+		<new public="1" set="method" line="41"><f a=""><e path="Void"/></f></new>
+	</class>
+	<class path="haxe.io.Input" params="" file="D:\haxe/std/haxe/io/Input.hx">
+		<_float_of_bytes line="259" static="1"><f a=":">
+	<t path="haxe.io.BytesData"/>
+	<e path="Bool"/>
+	<c path="Float"/>
+</f></_float_of_bytes>
+		<_double_of_bytes line="260" static="1"><f a=":">
+	<t path="haxe.io.BytesData"/>
+	<e path="Bool"/>
+	<c path="Float"/>
+</f></_double_of_bytes>
+		<bigEndian public="1" set="setEndian"><e path="Bool"/></bigEndian>
+		<readByte public="1" set="method" line="35"><f a=""><c path="Int"/></f></readByte>
+		<readBytes public="1" set="method" line="44"><f a="s:pos:len">
+	<c path="haxe.io.Bytes"/>
+	<c path="Int"/>
+	<c path="Int"/>
+	<c path="Int"/>
+</f></readBytes>
+		<close public="1" set="method" line="65"><f a=""><e path="Void"/></f></close>
+		<setEndian set="method" line="68"><f a="b">
+	<e path="Bool"/>
+	<e path="Bool"/>
+</f></setEndian>
+		<readAll public="1" set="method" line="75"><f a="?bufsize">
+	<c path="Int"/>
+	<c path="haxe.io.Bytes"/>
+</f></readAll>
+		<readFullBytes public="1" set="method" line="96"><f a="s:pos:len">
+	<c path="haxe.io.Bytes"/>
+	<c path="Int"/>
+	<c path="Int"/>
+	<e path="Void"/>
+</f></readFullBytes>
+		<read public="1" set="method" line="104"><f a="nbytes">
+	<c path="Int"/>
+	<c path="haxe.io.Bytes"/>
+</f></read>
+		<readUntil public="1" set="method" line="116"><f a="end">
+	<c path="Int"/>
+	<c path="String"/>
+</f></readUntil>
+		<readLine public="1" set="method" line="124"><f a=""><c path="String"/></f></readLine>
+		<readFloat public="1" set="method" line="141"><f a=""><c path="Float"/></f></readFloat>
+		<readDouble public="1" set="method" line="155"><f a=""><c path="Float"/></f></readDouble>
+		<readInt8 public="1" set="method" line="169"><f a=""><c path="Int"/></f></readInt8>
+		<readInt16 public="1" set="method" line="176"><f a=""><c path="Int"/></f></readInt16>
+		<readUInt16 public="1" set="method" line="185"><f a=""><c path="Int"/></f></readUInt16>
+		<readInt24 public="1" set="method" line="191"><f a=""><c path="Int"/></f></readInt24>
+		<readUInt24 public="1" set="method" line="201"><f a=""><c path="Int"/></f></readUInt24>
+		<readInt31 public="1" set="method" line="208"><f a=""><c path="Int"/></f></readInt31>
+		<readUInt30 public="1" set="method" line="225"><f a=""><c path="Int"/></f></readUInt30>
+		<readInt32 public="1" set="method" line="234"><f a=""><t path="cpp.Int32"/></f></readInt32>
+		<readString public="1" set="method" line="242"><f a="len">
+	<c path="Int"/>
+	<c path="String"/>
+</f></readString>
+		<haxe_doc>
+	An Input is an abstract reader. See other classes in the [haxe.io] package
+	for several possible implementations.
+</haxe_doc>
+	</class>
+	<class path="Reflect" params="" file="D:\haxe/std/cpp/_std/Reflect.hx">
+		<hasField public="1" set="method" line="29" static="1">
+			<f a="o:field">
+				<d/>
+				<c path="String"/>
+				<e path="Bool"/>
+			</f>
+			<haxe_doc>
+		Tells if an object has a field set. This doesn't take into account the object prototype (class methods).
+	</haxe_doc>
+		</hasField>
+		<field public="1" set="method" line="33" static="1">
+			<f a="o:field">
+				<d/>
+				<c path="String"/>
+				<d/>
+			</f>
+			<haxe_doc>
+		Returns the field of an object, or null if [o] is not an object or doesn't have this field.
+	</haxe_doc>
+		</field>
+		<setField public="1" get="inline" set="null" line="37" static="1">
+			<f a="o:field:value">
+				<d/>
+				<c path="String"/>
+				<d/>
+				<e path="Void"/>
+			</f>
+			<haxe_doc>
+		Set an object field value.
+	</haxe_doc>
+		</setField>
+		<callMethod public="1" set="method" line="42" static="1">
+			<f a="o:func:args">
+				<d/>
+				<d/>
+				<c path="Array"><d/></c>
+				<d/>
+			</f>
+			<haxe_doc>
+		Call a method with the given object and arguments.
+	</haxe_doc>
+		</callMethod>
+		<fields public="1" set="method" line="49" static="1">
+			<f a="o">
+				<d/>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>
+		Returns the list of fields of an object, excluding its prototype (class methods).
+	</haxe_doc>
+		</fields>
+		<isFunction public="1" set="method" line="56" static="1">
+			<f a="f">
+				<d/>
+				<e path="Bool"/>
+			</f>
+			<haxe_doc>
+		Tells if a value is a function or not.
+	</haxe_doc>
+		</isFunction>
+		<compare public="1" params="T" set="method" line="60" static="1">
+			<f a="a:b">
+				<c path="compare.T"/>
+				<c path="compare.T"/>
+				<c path="Int"/>
+			</f>
+			<haxe_doc>
+		Generic comparison function, does not work for methods, see [compareMethods]
+	</haxe_doc>
+		</compare>
+		<compareMethods public="1" set="method" line="64" static="1">
+			<f a="f1:f2">
+				<d/>
+				<d/>
+				<e path="Bool"/>
+			</f>
+			<haxe_doc>
+		Compare two methods closures. Returns true if it's the same method of the same instance.
+		Does not work on Neko platform.
+	</haxe_doc>
+		</compareMethods>
+		<isObject public="1" set="method" line="72" static="1">
+			<f a="v">
+				<d/>
+				<e path="Bool"/>
+			</f>
+			<haxe_doc>
+		Tells if a value is an object or not.
+
+	</haxe_doc>
+		</isObject>
+		<deleteField public="1" set="method" line="79" static="1">
+			<f a="o:f">
+				<d/>
+				<c path="String"/>
+				<e path="Bool"/>
+			</f>
+			<haxe_doc>
+		Delete an object field.
+	</haxe_doc>
+		</deleteField>
+		<copy public="1" params="T" set="method" line="84" static="1">
+			<f a="o">
+				<c path="copy.T"/>
+				<c path="copy.T"/>
+			</f>
+			<haxe_doc>
+		Make a copy of the fields of an object.
+	</haxe_doc>
+		</copy>
+		<makeVarArgs public="1" set="method" line="95" static="1">
+			<f a="f">
+				<f a="">
+					<c path="Array"><d/></c>
+					<d/>
+				</f>
+				<d/>
+			</f>
+			<haxe_doc>
+		Transform a function taking an array of arguments into a function that can
+		be called with any number of arguments.
+	</haxe_doc>
+		</makeVarArgs>
+		<haxe_doc>
+	The Reflect API is a way to manipulate values dynamicly through an
+	abstract interface in an untyped manner. Use with care.
+</haxe_doc>
+	</class>
+	<enum path="rtAudio.RtAudioStreamFlags" params="" file="rtAudio/RtAudioStreamFlags.hx">
+		<RTAUDIO_SCHEDULE_REALTIME><haxe_doc>
+	 * Try to select realtime scheduling for callback thread.
+	 </haxe_doc></RTAUDIO_SCHEDULE_REALTIME>
+		<RTAUDIO_NONINTERLEAVED><haxe_doc>
+	 * Use non-interleaved buffers (default = interleaved).
+	 </haxe_doc></RTAUDIO_NONINTERLEAVED>
+		<RTAUDIO_MINIMIZE_LATENCY><haxe_doc>
+	 * Attempt to set stream parameters for lowest possible latency.
+	 </haxe_doc></RTAUDIO_MINIMIZE_LATENCY>
+		<RTAUDIO_HOG_DEVICE><haxe_doc>
+	 * Attempt grab device and prevent use by others.
+	 </haxe_doc></RTAUDIO_HOG_DEVICE>
+	</enum>
+	<class path="rtAudio.RtAudioStreamFlagsValue" params="" file="rtAudio/RtAudioStreamFlags.hx" module="rtAudio.RtAudioStreamFlags">
+		<RTAUDIO_NONINTERLEAVED public="1" get="inline" set="null" line="31" static="1"><c path="Int"/></RTAUDIO_NONINTERLEAVED>
+		<RTAUDIO_MINIMIZE_LATENCY public="1" get="inline" set="null" line="32" static="1"><c path="Int"/></RTAUDIO_MINIMIZE_LATENCY>
+		<RTAUDIO_HOG_DEVICE public="1" get="inline" set="null" line="33" static="1"><c path="Int"/></RTAUDIO_HOG_DEVICE>
+		<RTAUDIO_SCHEDULE_REALTIME public="1" get="inline" set="null" line="34" static="1"><c path="Int"/></RTAUDIO_SCHEDULE_REALTIME>
+		<haxe_doc>
+ * These are the real value exist in the original rtAudio.
+ </haxe_doc>
+	</class>
+	<class path="haxe.Log" params="" file="D:\haxe/std/haxe/Log.hx">
+		<trace public="1" set="dynamic" line="29" static="1"><f a="v:?infos">
+	<d/>
+	<t path="haxe.PosInfos"/>
+	<e path="Void"/>
+</f></trace>
+		<clear public="1" set="dynamic" line="43" static="1"><f a=""><e path="Void"/></f></clear>
+	</class>
+	<class path="haxe.io.Output" params="" file="D:\haxe/std/haxe/io/Output.hx">
+		<_float_bytes line="253" static="1"><f a=":">
+	<c path="Float"/>
+	<e path="Bool"/>
+	<t path="haxe.io.BytesData"/>
+</f></_float_bytes>
+		<_double_bytes line="254" static="1"><f a=":">
+	<c path="Float"/>
+	<e path="Bool"/>
+	<t path="haxe.io.BytesData"/>
+</f></_double_bytes>
+		<bigEndian public="1" set="setEndian"><e path="Bool"/></bigEndian>
+		<writeByte public="1" set="method" line="37"><f a="c">
+	<c path="Int"/>
+	<e path="Void"/>
+</f></writeByte>
+		<writeBytes public="1" set="method" line="41"><f a="s:pos:len">
+	<c path="haxe.io.Bytes"/>
+	<c path="Int"/>
+	<c path="Int"/>
+	<c path="Int"/>
+</f></writeBytes>
+		<flush public="1" set="method" line="64"><f a=""><e path="Void"/></f></flush>
+		<close public="1" set="method" line="67"><f a=""><e path="Void"/></f></close>
+		<setEndian set="method" line="70"><f a="b">
+	<e path="Bool"/>
+	<e path="Bool"/>
+</f></setEndian>
+		<write public="1" set="method" line="77"><f a="s">
+	<c path="haxe.io.Bytes"/>
+	<e path="Void"/>
+</f></write>
+		<writeFullBytes public="1" set="method" line="88"><f a="s:pos:len">
+	<c path="haxe.io.Bytes"/>
+	<c path="Int"/>
+	<c path="Int"/>
+	<e path="Void"/>
+</f></writeFullBytes>
+		<writeFloat public="1" set="method" line="96"><f a="x">
+	<c path="Float"/>
+	<e path="Void"/>
+</f></writeFloat>
+		<writeDouble public="1" set="method" line="108"><f a="x">
+	<c path="Float"/>
+	<e path="Void"/>
+</f></writeDouble>
+		<writeInt8 public="1" set="method" line="120"><f a="x">
+	<c path="Int"/>
+	<e path="Void"/>
+</f></writeInt8>
+		<writeInt16 public="1" set="method" line="126"><f a="x">
+	<c path="Int"/>
+	<e path="Void"/>
+</f></writeInt16>
+		<writeUInt16 public="1" set="method" line="131"><f a="x">
+	<c path="Int"/>
+	<e path="Void"/>
+</f></writeUInt16>
+		<writeInt24 public="1" set="method" line="142"><f a="x">
+	<c path="Int"/>
+	<e path="Void"/>
+</f></writeInt24>
+		<writeUInt24 public="1" set="method" line="147"><f a="x">
+	<c path="Int"/>
+	<e path="Void"/>
+</f></writeUInt24>
+		<writeInt31 public="1" set="method" line="160"><f a="x">
+	<c path="Int"/>
+	<e path="Void"/>
+</f></writeInt31>
+		<writeUInt30 public="1" set="method" line="177"><f a="x">
+	<c path="Int"/>
+	<e path="Void"/>
+</f></writeUInt30>
+		<writeInt32 public="1" set="method" line="192"><f a="x">
+	<t path="haxe.Int32"/>
+	<e path="Void"/>
+</f></writeInt32>
+		<prepare public="1" set="method" line="212">
+			<f a="nbytes">
+				<c path="Int"/>
+				<e path="Void"/>
+			</f>
+			<haxe_doc>
+		Inform that we are about to write at least a specified number of bytes.
+		The underlying implementation can allocate proper working space depending
+		on this information, or simply ignore it. This is not a mandatory call
+		but a tip and is only used in some specific cases.
+	</haxe_doc>
+		</prepare>
+		<writeInput public="1" set="method" line="215"><f a="i:?bufsize">
+	<c path="haxe.io.Input"/>
+	<c path="Int"/>
+	<e path="Void"/>
+</f></writeInput>
+		<writeString public="1" set="method" line="237"><f a="s">
+	<c path="String"/>
+	<e path="Void"/>
+</f></writeString>
+		<haxe_doc>
+	An Output is an abstract write. A specific output implementation will only
+	have to override the [writeChar] and maybe the [write], [flush] and [close]
+	methods. See [File.write] and [String.write] for two ways of creating an
+	Output.
+</haxe_doc>
+	</class>
+	<class path="cpp.io.FileOutput" params="" file="D:\haxe/std/cpp/io/FileOutput.hx">
+		<extends path="haxe.io.Output"/>
+		<file_close line="64" static="1"><f a="">
+	<t path="cpp.io.FileHandle"/>
+	<unknown/>
+</f></file_close>
+		<file_seek line="65" static="1"><f a="::">
+	<t path="cpp.io.FileHandle"/>
+	<c path="Int"/>
+	<c path="Int"/>
+	<unknown/>
+</f></file_seek>
+		<file_tell line="66" static="1"><f a="">
+	<t path="cpp.io.FileHandle"/>
+	<c path="Int"/>
+</f></file_tell>
+		<file_flush line="68" static="1"><f a="">
+	<t path="cpp.io.FileHandle"/>
+	<unknown/>
+</f></file_flush>
+		<file_write line="69" static="1"><f a=":::">
+	<t path="cpp.io.FileHandle"/>
+	<t path="haxe.io.BytesData"/>
+	<c path="Int"/>
+	<c path="Int"/>
+	<c path="Int"/>
+</f></file_write>
+		<file_write_char line="70" static="1"><f a=":">
+	<t path="cpp.io.FileHandle"/>
+	<c path="Int"/>
+	<unknown/>
+</f></file_write_char>
+		<__f><t path="cpp.io.FileHandle"/></__f>
+		<writeByte public="1" set="method" line="39" override="1"><f a="c">
+	<c path="Int"/>
+	<e path="Void"/>
+</f></writeByte>
+		<writeBytes public="1" set="method" line="43" override="1"><f a="s:p:l">
+	<c path="haxe.io.Bytes"/>
+	<c path="Int"/>
+	<c path="Int"/>
+	<c path="Int"/>
+</f></writeBytes>
+		<flush public="1" set="method" line="47" override="1"><f a=""><e path="Void"/></f></flush>
+		<close public="1" set="method" line="51" override="1"><f a=""><e path="Void"/></f></close>
+		<seek public="1" set="method" line="56"><f a="p:pos">
+	<c path="Int"/>
+	<e path="cpp.io.FileSeek"/>
+	<e path="Void"/>
+</f></seek>
+		<tell public="1" set="method" line="60"><f a=""><c path="Int"/></f></tell>
+		<new public="1" set="method" line="35"><f a="f">
+	<t path="cpp.io.FileHandle"/>
+	<e path="Void"/>
+</f></new>
+		<haxe_doc>
+	Use [cpp.io.File.write] to create a [FileOutput]
+</haxe_doc>
+	</class>
+	<class path="rtAudio.RtAudio" params="" file="rtAudio/RtAudio.hx">
+		<getCompiledApi public="1" set="method" line="15" static="1">
+			<f a=""><c path="Array"><e path="rtAudio.Api"/></c></f>
+			<haxe_doc>
+	 * A static function to determine the available compiled audio APIs.
+	 * 
+	 * @return Array of compiled Api.
+	 </haxe_doc>
+		</getCompiledApi>
+		<_RtAudio_getCompiledApi line="420" static="1"><f a=""><c path="Array"><d/></c></f></_RtAudio_getCompiledApi>
+		<_RtAudio_new line="421" static="1"><f a="">
+	<c path="Int"/>
+	<unknown/>
+</f></_RtAudio_new>
+		<_RtAudio_getCurrentApi line="422" static="1"><f a="">
+	<d/>
+	<c path="Int"/>
+</f></_RtAudio_getCurrentApi>
+		<_RtAudio_getDeviceCount line="423" static="1"><f a="">
+	<d/>
+	<c path="Int"/>
+</f></_RtAudio_getDeviceCount>
+		<_RtAudio_getDeviceInfo line="424" static="1"><f a=":">
+	<d/>
+	<c path="Int"/>
+	<unknown/>
+</f></_RtAudio_getDeviceInfo>
+		<_RtAudio_getDefaultOutputDevice line="425" static="1"><f a="">
+	<d/>
+	<c path="Int"/>
+</f></_RtAudio_getDefaultOutputDevice>
+		<_RtAudio_getDefaultInputDevice line="426" static="1"><f a="">
+	<d/>
+	<c path="Int"/>
+</f></_RtAudio_getDefaultInputDevice>
+		<_RtAudio_closeStream line="427" static="1"><f a="">
+	<d/>
+	<unknown/>
+</f></_RtAudio_closeStream>
+		<_RtAudio_startStream line="428" static="1"><f a="">
+	<d/>
+	<unknown/>
+</f></_RtAudio_startStream>
+		<_RtAudio_stopStream line="429" static="1"><f a="">
+	<d/>
+	<unknown/>
+</f></_RtAudio_stopStream>
+		<_RtAudio_abortStream line="430" static="1"><f a="">
+	<d/>
+	<unknown/>
+</f></_RtAudio_abortStream>
+		<_RtAudio_isStreamOpen line="431" static="1"><f a="">
+	<d/>
+	<e path="Bool"/>
+</f></_RtAudio_isStreamOpen>
+		<_RtAudio_isStreamRunning line="432" static="1"><f a="">
+	<d/>
+	<e path="Bool"/>
+</f></_RtAudio_isStreamRunning>
+		<_RtAudio_getStreamTime line="433" static="1"><f a="">
+	<d/>
+	<c path="Float"/>
+</f></_RtAudio_getStreamTime>
+		<_RtAudio_getStreamLatency line="434" static="1"><f a="">
+	<d/>
+	<c path="Int"/>
+</f></_RtAudio_getStreamLatency>
+		<_RtAudio_getStreamSampleRate line="435" static="1"><f a="">
+	<d/>
+	<c path="Int"/>
+</f></_RtAudio_getStreamSampleRate>
+		<_RtAudio_showWarnings line="436" static="1"><f a=":">
+	<d/>
+	<e path="Bool"/>
+	<unknown/>
+</f></_RtAudio_showWarnings>
+		<_RtAudio_openStream line="437" static="1"><f a="::">
+	<d/>
+	<c path="rtAudio.RtAudio"/>
+	<a>
+		<userData><d/></userData>
+		<sampleRate><c path="Int"/></sampleRate>
+		<outputParameters><t path="Null"><t path="rtAudio.StreamParameters"/></t></outputParameters>
+		<options><d/></options>
+		<inputParameters><t path="Null"><t path="rtAudio.StreamParameters"/></t></inputParameters>
+		<format><c path="Int"/></format>
+		<bufferFrames><c path="Int"/></bufferFrames>
+	</a>
+	<unknown/>
+</f></_RtAudio_openStream>
+		<getCurrentApi public="1" set="method" line="37">
+			<f a=""><e path="rtAudio.Api"/></f>
+			<haxe_doc>
+	 * @return The audio API specifier for the current instance of RtAudio.
+	 </haxe_doc>
+		</getCurrentApi>
+		<getDeviceCount public="1" set="method" line="50">
+			<f a=""><c path="Int"/></f>
+			<haxe_doc><![CDATA[
+	 * A public function that queries for the number of audio devices available.
+	 * 
+	 * <p>This function performs a system query of available devices each time it
+	 * is called, thus supporting devices connected after instantiation. If
+	 * a system error occurs during processing, a warning will be issued.</p>
+	 * 
+	 * @return The number of audio devices available.
+	 ]]></haxe_doc>
+		</getDeviceCount>
+		<getDeviceInfo public="1" set="method" line="66">
+			<f a="device">
+				<c path="Int"/>
+				<t path="rtAudio.DeviceInfo"/>
+			</f>
+			<haxe_doc>
+	 * Any device integer between 0 and getDeviceCount() - 1 is valid.
+	 * If an invalid argument is provided, an RtError (type = INVALID_USE)
+	 * will be printed to the console. If a device is busy or otherwise 
+	 * unavailable, the DeviceInfo member "probed" will have a value of "false" 
+	 * and all other members are null. If the specified device is the
+	 * current default input or output device, the corresponding
+	 * "isDefault" member will have a value of "true".
+	 * 
+	 * @param	device	Any device integer between 0 and getDeviceCount() - 1.
+	 * @return	DeviceInfo for a specified device number.
+	 </haxe_doc>
+		</getDeviceInfo>
+		<getDefaultOutputDevice public="1" set="method" line="97">
+			<f a=""><c path="Int"/></f>
+			<haxe_doc>
+	 * If the underlying audio API does not provide a "default
+	 * device", or if no devices are available, the return value will be
+	 * 0.  Note that this is a valid device identifier and it is the
+	 * client's responsibility to verify that a device is available
+	 * before attempting to open a stream.
+	 * 
+	 * @return The index of the default output device.
+	 </haxe_doc>
+		</getDefaultOutputDevice>
+		<getDefaultInputDevice public="1" set="method" line="110">
+			<f a=""><c path="Int"/></f>
+			<haxe_doc>
+	 * If the underlying audio API does not provide a "default
+	 * device", or if no devices are available, the return value will be
+	 * 0.  Note that this is a valid device identifier and it is the
+	 * client's responsibility to verify that a device is available
+	 * before attempting to open a stream.
+	 * 
+	 * @return The index of the default input device.
+	 </haxe_doc>
+		</getDefaultInputDevice>
+		<closeStream public="1" set="method" line="120">
+			<f a=""><e path="Void"/></f>
+			<haxe_doc><![CDATA[
+	 * A function that closes a stream and frees any associated stream memory.
+	 * 
+	 * <p>If a stream is not open, this function issues a warning and
+	 * returns (no exception is thrown).</p>
+	 ]]></haxe_doc>
+		</closeStream>
+		<startStream public="1" set="method" line="132">
+			<f a=""><e path="Void"/></f>
+			<haxe_doc><![CDATA[
+	 * A function that starts a stream.
+	 * 
+	 * <p>An RtError (type = SYSTEM_ERROR) is printed to console if an error 
+	 * occurs during processing. An RtError (type = INVALID_USE) is printed 
+	 * to console if a stream is not open. A warning is issued if the stream 
+	 * is already running.</p>
+	 ]]></haxe_doc>
+		</startStream>
+		<stopStream public="1" set="method" line="144">
+			<f a=""><e path="Void"/></f>
+			<haxe_doc><![CDATA[
+	 * Stop a stream, allowing any samples remaining in the output queue to be played.
+	 * 
+	 * <p>An RtError (type = SYSTEM_ERROR) is printed to console if an error occurs
+	 * during processing.  An RtError (type = INVALID_USE) is printed to console 
+	 * if a stream is not open.  A warning is issued if the stream is already
+	 * stopped.</p>
+	 ]]></haxe_doc>
+		</stopStream>
+		<abortStream public="1" set="method" line="156">
+			<f a=""><e path="Void"/></f>
+			<haxe_doc><![CDATA[
+	 * Stop a stream, discarding any samples remaining in the input/output queue.
+	 * 
+	 * <p>An RtError (type = SYSTEM_ERROR) is printed to console if an error occurs
+	 * during processing.  An RtError (type = INVALID_USE) is printed to console if a
+	 * stream is not open.  A warning is issued if the stream is already
+	 * stopped.</p>
+	 ]]></haxe_doc>
+		</abortStream>
+		<isStreamOpen public="1" set="method" line="163">
+			<f a=""><e path="Bool"/></f>
+			<haxe_doc>
+	 * @return true if a stream is open and false if not.
+	 </haxe_doc>
+		</isStreamOpen>
+		<isStreamRunning public="1" set="method" line="170">
+			<f a=""><e path="Bool"/></f>
+			<haxe_doc>
+	 * @return true if the stream is running and false if it is stopped or not open.
+	 </haxe_doc>
+		</isStreamRunning>
+		<getStreamTime public="1" set="method" line="179">
+			<f a=""><c path="Float"/></f>
+			<haxe_doc>
+	 * If a stream is not open, an RtError (type = INVALID_USE) will be printed to console.
+	 * 
+	 * @return The number of elapsed seconds since the stream was started.
+	 </haxe_doc>
+		</getStreamTime>
+		<getStreamLatency public="1" set="method" line="193">
+			<f a=""><c path="Int"/></f>
+			<haxe_doc>
+	 * The stream latency refers to delay in audio input and/or output
+	 * caused by internal buffering by the audio system and/or hardware.
+	 * For duplex streams, the returned value will represent the sum of
+	 * the input and output latencies. If a stream is not open, an
+	 * RtError (type = INVALID_USE) will be printed to console. If the 
+	 * API does not report latency, the return value will be zero.
+	 * 
+	 * @return The internal stream latency in sample frames.
+	 </haxe_doc>
+		</getStreamLatency>
+		<getStreamSampleRate public="1" set="method" line="204">
+			<f a=""><c path="Int"/></f>
+			<haxe_doc>
+	 * On some systems, the sample rate used may be slightly different
+	 * than that specified in the stream parameters.  If a stream is not
+	 * open, an RtError (type = INVALID_USE) will be printed to console.
+	 * 
+	 * @return Actual sample rate in use by the stream.
+	 </haxe_doc>
+		</getStreamSampleRate>
+		<showWarnings public="1" set="method" line="213">
+			<f a="?value">
+				<e path="Bool"/>
+				<e path="Void"/>
+			</f>
+			<haxe_doc>
+	 * Specify whether warning messages should be printed to stderr.
+	 * 
+	 * @param	value true if warning messages should be printed to stderr.
+	 </haxe_doc>
+		</showWarnings>
+		<openStream public="1" set="method" line="256">
+			<f a="outputParameters:inputParameters:format:sampleRate:bufferFrames:streamCallback:?userData:?options">
+				<t path="Null"><t path="rtAudio.StreamParameters"/></t>
+				<t path="Null"><t path="rtAudio.StreamParameters"/></t>
+				<e path="rtAudio.RtAudioFormat"/>
+				<c path="Int"/>
+				<c path="Int"/>
+				<t path="rtAudio.RtAudioCallback"/>
+				<d/>
+				<t path="rtAudio.StreamOptions"/>
+				<e path="Void"/>
+			</f>
+			<haxe_doc><![CDATA[
+	 * A public function for opening a stream with the specified parameters.
+	 * 
+	 * <p>An RtError (type = SYSTEM_ERROR) is printed to console if a stream 
+	 * cannot be opened with the specified parameters or an error occurs 
+	 * during processing.  An RtError (type = INVALID_USE) is printed to 
+	 * console if any invalid device ID or channel number parameters are 
+	 * specified.</p>
+	 * 
+	 * @param	outputParameters	Specifies output stream parameters to use when opening a stream,
+	 * 								including a device ID, number of channels,
+	 * 								and starting channel number.  For input-only streams, this
+	 * 								argument should be null.  The device ID is an index value between
+	 * 								0 and getDeviceCount() - 1.
+	 * @param	inputParameters		Specifies input stream parameters to use when opening a stream,
+	 * 								including a device ID, number of channels,
+	 * 								and starting channel number.  For output-only streams, this
+	 * 								argument should be null.  The device ID is an index value between
+	 * 								0 and getDeviceCount() - 1.
+	 * @param	format				An RtAudioFormat specifying the desired sample data format.
+	 * @param	sampleRate			The desired sample rate (sample frames per second).
+	 * @param	bufferFrames		Indicating the desired internal buffer size in sample frames.
+	 * 								The actual value used by the device is assigned to the property 
+	 * 								of the same name. A value of zero can be specified, in which case 
+	 * 								the lowest allowable value is determined.
+	 * @param	streamCallback		A client-defined function that will be invoked when input data is 
+	 * 								available and/or output data is needed.
+	 * @param	?userData			An optional pointer to data that can be accessed from the property
+	 * 								of the same name.
+	 * @param	?options			An optional pointer to a StreamOptions containing various global 
+	 * 								stream options, including a Array of RtAudioStreamFlags and a 
+	 * 								suggested number of stream buffers that can be used to control 
+	 * 								stream latency. More buffers typically result in more robust 
+	 * 								performance, though at a cost of greater latency.  If a value of 
+	 * 								zero is specified, a system-specific median value is chosen. If the
+	 * 								RTAUDIO_MINIMIZE_LATENCY flag bit is set, the lowest allowable value 
+	 * 								is used. The actual value used is assigned to the property of the 
+	 * 								same name. The parameter is API dependent.
+	 ]]></haxe_doc>
+		</openStream>
+		<handle public="1" set="null">
+			<d/>
+			<haxe_doc>
+	 * This is the handle to the real RtAudio object in ndll. Don't use it unless you know what it means.
+	 </haxe_doc>
+		</handle>
+		<streamCallback public="1" set="null">
+			<t path="rtAudio.RtAudioCallback"/>
+			<haxe_doc>
+	 * The streamCallback you provided when calling openStream() is stored here.
+	 </haxe_doc>
+		</streamCallback>
+		<outputParameters public="1" set="null">
+			<t path="Null"><t path="rtAudio.StreamParameters"/></t>
+			<haxe_doc>
+	 * The outputParameters you provided when calling openStream() is stored here.
+	 </haxe_doc>
+		</outputParameters>
+		<inputParameters public="1" set="null">
+			<t path="Null"><t path="rtAudio.StreamParameters"/></t>
+			<haxe_doc>
+	 * The inputParameters you provided when calling openStream() is stored here.
+	 </haxe_doc>
+		</inputParameters>
+		<format public="1" set="null">
+			<e path="rtAudio.RtAudioFormat"/>
+			<haxe_doc>
+	 * The format you provided when calling openStream() is stored here.
+	 </haxe_doc>
+		</format>
+		<formatValue set="null"><c path="Int"/></formatValue>
+		<sampleRate public="1" set="null">
+			<c path="Int"/>
+			<haxe_doc>
+	 * The sampleRate you provided when calling openStream() is stored here.
+	 </haxe_doc>
+		</sampleRate>
+		<bufferFrames public="1" set="null">
+			<c path="Int"/>
+			<haxe_doc>
+	 * The bufferFrames you provided when calling openStream() is stored here.
+	 </haxe_doc>
+		</bufferFrames>
+		<userData public="1" set="null">
+			<d/>
+			<haxe_doc>
+	 * The userData you provided when calling openStream() is stored here.
+	 </haxe_doc>
+		</userData>
+		<options public="1" set="null">
+			<t path="Null"><t path="rtAudio.StreamOptions"/></t>
+			<haxe_doc>
+	 * The options you provided when calling openStream() is stored here.
+	 </haxe_doc>
+		</options>
+		<status public="1" set="null">
+			<c path="Int"/>
+			<haxe_doc>
+	 * Status of the stream.
+	 </haxe_doc>
+		</status>
+		<outputBuffer public="1" set="null">
+			<d/>
+			<haxe_doc><![CDATA[
+	 * Buffer that needs to be filled by streamCallback when playing a output stream.
+	 * You should cast it to Array<Int> or Array<Float> depending on the format you specified.
+	 ]]></haxe_doc>
+		</outputBuffer>
+		<inputBuffer public="1" set="null">
+			<d/>
+			<haxe_doc><![CDATA[
+	 * Buffer for storing the input stream data, that used by streamCallback.
+	 * You should cast it to Array<Int> or Array<Float> depending on the format you specified.
+	 ]]></haxe_doc>
+		</inputBuffer>
+		<new public="1" set="method" line="30">
+			<f a="?api">
+				<e path="rtAudio.Api"/>
+				<e path="Void"/>
+			</f>
+			<haxe_doc>
+	 * The class constructor.
+	 * 
+	 * @param	?api	The compiled Api to be used. If no API argument is specified and multiple API support has been
+	 * 					compiled, the default order of use is JACK, ALSA, OSS (Linux
+	 * 					systems) and ASIO, DS (Windows systems).
+	 </haxe_doc>
+		</new>
+	</class>
+	<class path="rtAudio.tests.Record" params="" file="rtAudio/tests/Record.hx">
+		<usage set="method" line="24" static="1"><f a=""><e path="Void"/></f></usage>
+		<input set="method" line="36" static="1"><f a="rtAudio">
+	<c path="rtAudio.RtAudio"/>
+	<c path="Int"/>
+</f></input>
+		<adc line="58" static="1"><c path="rtAudio.RtAudio"/></adc>
+		<main public="1" set="method" line="60" static="1"><f a=""><e path="Void"/></f></main>
+		<haxe_doc><![CDATA[
+ * Ported from...
+ * 
+ * record.cpp
+ * by Gary P. Scavone, 2007
+ * 
+ * <p>This program records audio from a device and writes it to a
+ * header-less binary file.  Use the 'playraw', with the same
+ * parameters and format settings, to playback the audio.</p>
+ ]]></haxe_doc>
+	</class>
+	<typedef path="rtAudio.tests.InputData" params="" file="rtAudio/tests/Record.hx" module="rtAudio.tests.Record"><a>
+	<totalFrames><c path="Int"/></totalFrames>
+	<frameCounter><c path="Int"/></frameCounter>
+	<channels><c path="Int"/></channels>
+	<buffer><c path="Array"><c path="Int"/></c></buffer>
+</a></typedef>
+	<class path="StringBuf" params="" file="D:\haxe/std/StringBuf.hx">
+		<add public="1" get="inline" set="null" line="46">
+			<f a="?x">
+				<d/>
+				<e path="Void"/>
+			</f>
+			<haxe_doc>
+		Adds the representation of any value to the string buffer.
+	</haxe_doc>
+		</add>
+		<addSub public="1" get="inline" set="null" line="57">
+			<f a="s:pos:?len">
+				<c path="String"/>
+				<c path="Int"/>
+				<c path="Int"/>
+				<e path="Void"/>
+			</f>
+			<haxe_doc>
+		Adds a part of a string to the string buffer.
+	</haxe_doc>
+		</addSub>
+		<addChar public="1" get="inline" set="null" line="73">
+			<f a="c">
+				<c path="Int"/>
+				<e path="Void"/>
+			</f>
+			<haxe_doc>
+		Adds a character to the string buffer.
+	</haxe_doc>
+		</addChar>
+		<toString public="1" get="inline" set="null" line="87">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>
+		Returns the content of the string buffer.
+		The buffer is not emptied by this operation.
+	</haxe_doc>
+		</toString>
+		<b><c path="Array"><d/></c></b>
+		<new public="1" set="method" line="35">
+			<f a=""><e path="Void"/></f>
+			<haxe_doc>
+		Creates a new string buffer.
+	</haxe_doc>
+		</new>
+		<haxe_doc>
+	A String buffer is an efficient way to build a big string by
+	appending small elements together.
+</haxe_doc>
+	</class>
+	<class path="cpp.io.FileInput" params="" file="D:\haxe/std/cpp/io/FileInput.hx">
+		<extends path="haxe.io.Input"/>
+		<file_eof line="79" static="1"><f a="">
+	<t path="cpp.io.FileHandle"/>
+	<e path="Bool"/>
+</f></file_eof>
+		<file_read line="81" static="1"><f a=":::">
+	<t path="cpp.io.FileHandle"/>
+	<t path="haxe.io.BytesData"/>
+	<c path="Int"/>
+	<c path="Int"/>
+	<c path="Int"/>
+</f></file_read>
+		<file_read_char line="82" static="1"><f a="">
+	<t path="cpp.io.FileHandle"/>
+	<c path="Int"/>
+</f></file_read_char>
+		<file_close line="84" static="1"><f a="">
+	<t path="cpp.io.FileHandle"/>
+	<unknown/>
+</f></file_close>
+		<file_seek line="85" static="1"><f a="::">
+	<t path="cpp.io.FileHandle"/>
+	<c path="Int"/>
+	<c path="Int"/>
+	<unknown/>
+</f></file_seek>
+		<file_tell line="86" static="1"><f a="">
+	<t path="cpp.io.FileHandle"/>
+	<c path="Int"/>
+</f></file_tell>
+		<__f><t path="cpp.io.FileHandle"/></__f>
+		<readByte public="1" set="method" line="39" override="1"><f a=""><c path="Int"/></f></readByte>
+		<readBytes public="1" set="method" line="50" override="1"><f a="s:p:l">
+	<c path="haxe.io.Bytes"/>
+	<c path="Int"/>
+	<c path="Int"/>
+	<c path="Int"/>
+</f></readBytes>
+		<close public="1" set="method" line="61" override="1"><f a=""><e path="Void"/></f></close>
+		<seek public="1" set="method" line="66"><f a="p:pos">
+	<c path="Int"/>
+	<e path="cpp.io.FileSeek"/>
+	<e path="Void"/>
+</f></seek>
+		<tell public="1" set="method" line="70"><f a=""><c path="Int"/></f></tell>
+		<eof public="1" set="method" line="75"><f a=""><e path="Bool"/></f></eof>
+		<new public="1" set="method" line="35"><f a="f">
+	<t path="cpp.io.FileHandle"/>
+	<e path="Void"/>
+</f></new>
+		<haxe_doc>
+	Use [cpp.io.File.read] to create a [FileInput]
+</haxe_doc>
+	</class>
+	<typedef path="rtAudio.StreamOptions" params="" file="rtAudio/StreamOptions.hx">
+		<a>
+			<streamName><c path="String"/></streamName>
+			<priority><c path="Int"/></priority>
+			<numberOfBuffers><c path="Int"/></numberOfBuffers>
+			<flags><c path="Array"><e path="rtAudio.RtAudioStreamFlags"/></c></flags>
+		</a>
+		<haxe_doc><![CDATA[
+ * The structure for specifying stream options.
+ * 
+ * <p>By default, RtAudio streams pass and receive audio data from the
+ * client in an interleaved format.  By passing the
+ * RTAUDIO_NONINTERLEAVED flag to the openStream() function, audio
+ * data will instead be presented in non-interleaved buffers.  In
+ * this case, each buffer argument in the RtAudioCallback function
+ * will point to a single array of data, with nFrames samples for
+ * each channel concatenated back-to-back.  For example, the first
+ * sample of data for the second channel would be located at index 
+ * nFrames (assuming the buffer pointer was recast to the correct
+ * data type for the stream).</p>
+ * 
+ * <p>Certain audio APIs offer a number of parameters that influence the
+ * I/O latency of a stream.  By default, RtAudio will attempt to set
+ * these parameters internally for robust (glitch-free) performance
+ * (though some APIs, like Windows Direct Sound, make this difficult).
+ * By passing the RTAUDIO_MINIMIZE_LATENCY flag to the openStream()
+ * function, internal stream settings will be influenced in an attempt
+ * to minimize stream latency, though possibly at the expense of stream
+ * performance.</p>
+ *
+ * <p>If the RTAUDIO_HOG_DEVICE flag is set, RtAudio will attempt to
+ * open the input and/or output stream device(s) for exclusive use.
+ * Note that this is not possible with all supported audio APIs.</p>
+ * 
+ * <p>If the RTAUDIO_SCHEDULE_REALTIME flag is set, RtAudio will attempt 
+ * to select realtime scheduling (round-robin) for the callback thread.
+ * The priority parameter will only be used if the RTAUDIO_SCHEDULE_REALTIME
+ * flag is set. It defines the thread's realtime priority. </p>
+ * 
+ ]]></haxe_doc>
+	</typedef>
+	<typedef path="rtAudio.StreamParameters" params="" file="rtAudio/StreamParameters.hx">
+		<a>
+			<nChannels><c path="Int"/></nChannels>
+			<firstChannel><c path="Int"/></firstChannel>
+			<deviceId><c path="Int"/></deviceId>
+		</a>
+		<haxe_doc>
+ * The structure for specifying input or ouput stream parameters.
+ </haxe_doc>
+	</typedef>
+	<class path="rtAudio.tests.Testall" params="" file="rtAudio/tests/Testall.hx">
+		<BASE_RATE get="inline" set="null" line="23" static="1"><c path="Float"/></BASE_RATE>
+		<TIME get="inline" set="null" line="24" static="1"><c path="Float"/></TIME>
+		<channels static="1"><c path="Int"/></channels>
+		<usage set="method" line="27" static="1"><f a=""><e path="Void"/></f></usage>
+		<sawi set="method" line="41" static="1"><f a="rt">
+	<c path="rtAudio.RtAudio"/>
+	<c path="Int"/>
+</f></sawi>
+		<sawni set="method" line="62" static="1"><f a="rt">
+	<c path="rtAudio.RtAudio"/>
+	<c path="Int"/>
+</f></sawni>
+		<inout set="method" line="84" static="1"><f a="rtAudio">
+	<c path="rtAudio.RtAudio"/>
+	<c path="Int"/>
+</f></inout>
+		<dac static="1"><c path="rtAudio.RtAudio"/></dac>
+		<main public="1" set="method" line="101" static="1"><f a=""><e path="Void"/></f></main>
+		<haxe_doc><![CDATA[
+ * Ported from...
+ * 
+ * testall.cpp
+ * by Gary P. Scavone, 2007-2008
+ * 
+ * <p>This program will make a variety of calls
+ * to extensively test RtAudio functionality.</p>
+ ]]></haxe_doc>
+	</class>
+	<typedef path="cpp.Int32" params="" file="D:\haxe/std/cpp/CppInt32__.hx" module="cpp.CppInt32__"><c path="cpp.CppInt32__"/></typedef>
+	<class path="cpp.CppInt32__" params="" file="D:\haxe/std/cpp/CppInt32__.hx" extern="1">
+		<make public="1" set="method" static="1"><f a="a:b">
+	<c path="Int"/>
+	<c path="Int"/>
+	<t path="cpp.Int32"/>
+</f></make>
+		<ofInt public="1" set="method" static="1"><f a="x">
+	<c path="Int"/>
+	<t path="cpp.Int32"/>
+</f></ofInt>
+		<toInt public="1" set="method" static="1"><f a="x">
+	<t path="cpp.Int32"/>
+	<c path="Int"/>
+</f></toInt>
+		<add public="1" set="method" static="1"><f a="a:b">
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+</f></add>
+		<sub public="1" set="method" static="1"><f a="a:b">
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+</f></sub>
+		<mul public="1" set="method" static="1"><f a="a:b">
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+</f></mul>
+		<div public="1" set="method" static="1"><f a="a:b">
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+</f></div>
+		<mod public="1" set="method" static="1"><f a="a:b">
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+</f></mod>
+		<shl public="1" set="method" static="1"><f a="a:b">
+	<t path="cpp.Int32"/>
+	<c path="Int"/>
+	<t path="cpp.Int32"/>
+</f></shl>
+		<shr public="1" set="method" static="1"><f a="a:b">
+	<t path="cpp.Int32"/>
+	<c path="Int"/>
+	<t path="cpp.Int32"/>
+</f></shr>
+		<ushr public="1" set="method" static="1"><f a="a:b">
+	<t path="cpp.Int32"/>
+	<c path="Int"/>
+	<t path="cpp.Int32"/>
+</f></ushr>
+		<and public="1" set="method" static="1"><f a="a:b">
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+</f></and>
+		<or public="1" set="method" static="1"><f a="a:b">
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+</f></or>
+		<xor public="1" set="method" static="1"><f a="a:b">
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+</f></xor>
+		<neg public="1" set="method" static="1"><f a="a">
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+</f></neg>
+		<complement public="1" set="method" static="1"><f a="a">
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+</f></complement>
+		<compare public="1" set="method" static="1"><f a="a:b">
+	<t path="cpp.Int32"/>
+	<t path="cpp.Int32"/>
+	<c path="Int"/>
+</f></compare>
+	</class>
+	<typedef path="haxe.Int32" params="" file="D:\haxe/std/haxe/Int32.hx"><c path="cpp.CppInt32__"/></typedef>
+	<enum path="rtAudio.RtAudioFormat" params="" file="rtAudio/RtAudioFormat.hx">
+		<RTAUDIO_SINT8><haxe_doc>
+	 * 8-bit signed integer.
+	 </haxe_doc></RTAUDIO_SINT8>
+		<RTAUDIO_SINT32><haxe_doc>
+	 * 32-bit signed integer.
+	 </haxe_doc></RTAUDIO_SINT32>
+		<RTAUDIO_SINT24><haxe_doc>
+	 * Lower 3 bytes of 32-bit signed integer. Not supported in hxRtAudio.
+	 </haxe_doc></RTAUDIO_SINT24>
+		<RTAUDIO_SINT16><haxe_doc>
+	 * 16-bit signed integer.
+	 </haxe_doc></RTAUDIO_SINT16>
+		<RTAUDIO_FLOAT64><haxe_doc>
+	 * Normalized between plus/minus 1.0.
+	 </haxe_doc></RTAUDIO_FLOAT64>
+		<RTAUDIO_FLOAT32><haxe_doc>
+	 * Normalized between plus/minus 1.0.
+	 </haxe_doc></RTAUDIO_FLOAT32>
+		<haxe_doc><![CDATA[
+ * RtAudio data format type.
+ * 
+ * <p>Support for signed integers and floats.  Audio data fed to/from an
+ * RtAudio stream is assumed to ALWAYS be in host byte order.  The
+ * internal routines will automatically take care of any necessary
+ * byte-swapping between the host format and the soundcard.  Thus,
+ * endian-ness is not a concern in the following format definitions.</p>
+ ]]></haxe_doc>
+	</enum>
+	<class path="rtAudio.RtAudioFormatValue" params="" file="rtAudio/RtAudioFormat.hx" module="rtAudio.RtAudioFormat">
+		<RTAUDIO_SINT8 public="1" get="inline" set="null" line="48" static="1"><c path="Int"/></RTAUDIO_SINT8>
+		<RTAUDIO_SINT16 public="1" get="inline" set="null" line="49" static="1"><c path="Int"/></RTAUDIO_SINT16>
+		<RTAUDIO_SINT24 public="1" get="inline" set="null" line="50" static="1"><c path="Int"/></RTAUDIO_SINT24>
+		<RTAUDIO_SINT32 public="1" get="inline" set="null" line="51" static="1"><c path="Int"/></RTAUDIO_SINT32>
+		<RTAUDIO_FLOAT32 public="1" get="inline" set="null" line="52" static="1"><c path="Int"/></RTAUDIO_FLOAT32>
+		<RTAUDIO_FLOAT64 public="1" get="inline" set="null" line="53" static="1"><c path="Int"/></RTAUDIO_FLOAT64>
+		<haxe_doc>
+ * These are the real value exist in the original rtAudio.
+ </haxe_doc>
+	</class>
+	<typedef path="rtAudio.RtAudioCallback" params="" file="rtAudio/RtAudioCallback.hx">
+		<f a="">
+			<c path="rtAudio.RtAudio"/>
+			<c path="Int"/>
+		</f>
+		<haxe_doc><![CDATA[
+ * <p>All RtAudio clients must create a function of type RtAudioCallback
+ * to read and/or write data from/to the audio stream.  When the
+ * underlying audio system is ready for new input or output data, this
+ * function will be invoked.</p>
+ * 
+ * <p>To continue normal stream operation, the RtAudioCallback function
+ * should return a value of zero.  To stop the stream and drain the
+ * output buffer, the function should return a value of one.  To abort
+ * the stream immediately, the client should return a value of two.</p>
+ ]]></haxe_doc>
+	</typedef>
+	<class path="haxe.io.Bytes" params="" file="D:\haxe/std/haxe/io/Bytes.hx">
+		<alloc public="1" set="method" line="211" static="1"><f a="length">
+	<c path="Int"/>
+	<c path="haxe.io.Bytes"/>
+</f></alloc>
+		<ofString public="1" set="method" line="239" static="1"><f a="s">
+	<c path="String"/>
+	<c path="haxe.io.Bytes"/>
+</f></ofString>
+		<ofData public="1" set="method" line="278" static="1"><f a="b">
+	<t path="haxe.io.BytesData"/>
+	<c path="haxe.io.Bytes"/>
+</f></ofData>
+		<length public="1" set="null"><c path="Int"/></length>
+		<b><t path="haxe.io.BytesData"/></b>
+		<get public="1" get="inline" set="null" line="37"><f a="pos">
+	<c path="Int"/>
+	<c path="Int"/>
+</f></get>
+		<set public="1" get="inline" set="null" line="51"><f a="pos:v">
+	<c path="Int"/>
+	<c path="Int"/>
+	<e path="Void"/>
+</f></set>
+		<blit public="1" set="method" line="65"><f a="pos:src:srcpos:len">
+	<c path="Int"/>
+	<c path="haxe.io.Bytes"/>
+	<c path="Int"/>
+	<c path="Int"/>
+	<e path="Void"/>
+</f></blit>
+		<sub public="1" set="method" line="93"><f a="pos:len">
+	<c path="Int"/>
+	<c path="Int"/>
+	<c path="haxe.io.Bytes"/>
+</f></sub>
+		<compare public="1" set="method" line="112"><f a="other">
+	<c path="haxe.io.Bytes"/>
+	<c path="Int"/>
+</f></compare>
+		<readString public="1" set="method" line="148"><f a="pos:len">
+	<c path="Int"/>
+	<c path="Int"/>
+	<c path="String"/>
+</f></readString>
+		<toString public="1" set="method" line="192"><f a=""><c path="String"/></f></toString>
+		<getData public="1" get="inline" set="null" line="207"><f a=""><t path="haxe.io.BytesData"/></f></getData>
+		<new set="method" line="32"><f a="length:b">
+	<c path="Int"/>
+	<t path="haxe.io.BytesData"/>
+	<e path="Void"/>
+</f></new>
+	</class>
+	<class path="IntIter" params="" file="D:\haxe/std/IntIter.hx">
+		<min><c path="Int"/></min>
+		<max><c path="Int"/></max>
+		<hasNext public="1" set="method" line="46">
+			<f a=""><e path="Bool"/></f>
+			<haxe_doc>
+		Returns true if the iterator has other items, false otherwise.
+	</haxe_doc>
+		</hasNext>
+		<next public="1" set="method" line="53">
+			<f a=""><c path="Int"/></f>
+			<haxe_doc>
+		Moves to the next item of the iterator.
+	</haxe_doc>
+		</next>
+		<new public="1" set="method" line="38">
+			<f a="min:max">
+				<c path="Int"/>
+				<c path="Int"/>
+				<e path="Void"/>
+			</f>
+			<haxe_doc><![CDATA[
+		Iterate from [min] (inclusive) to [max] (exclusive).
+		If [max <= min], the iterator will not act as a countdown.
+	]]></haxe_doc>
+		</new>
+		<haxe_doc>
+	Integer iterator. Used for interval implementation.
+</haxe_doc>
+	</class>
+	<enum path="haxe.io.Error" params="" file="D:\haxe/std/haxe/io/Error.hx">
+		<Overflow><haxe_doc> An integer value is outside its allowed range </haxe_doc></Overflow>
+		<OutsideBounds><haxe_doc> An operation on Bytes is outside of its valid range </haxe_doc></OutsideBounds>
+		<Custom a="e">
+			<d/>
+			<haxe_doc> Other errors </haxe_doc>
+		</Custom>
+		<Blocked><haxe_doc> The IO is set into nonblocking mode and some data cannot be read or written </haxe_doc></Blocked>
+		<haxe_doc>
+	The possible IO errors that can occur
+</haxe_doc>
+	</enum>
+	<class path="Std" params="" file="D:\haxe/std/cpp/_std/Std.hx">
+		<is public="1" set="method" line="27" static="1">
+			<f a="v:t">
+				<d/>
+				<d/>
+				<e path="Bool"/>
+			</f>
+			<haxe_doc>
+		Tells if a value v is of the type t.
+	</haxe_doc>
+		</is>
+		<string public="1" set="method" line="31" static="1">
+			<f a="s">
+				<d/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>
+		Convert any value to a String
+	</haxe_doc>
+		</string>
+		<int public="1" set="method" line="35" static="1">
+			<f a="x">
+				<c path="Float"/>
+				<c path="Int"/>
+			</f>
+			<haxe_doc>
+		Convert a Float to an Int, rounded down.
+	</haxe_doc>
+		</int>
+		<parseInt public="1" set="method" line="39" static="1">
+			<f a="x">
+				<c path="String"/>
+				<t path="Null"><c path="Int"/></t>
+			</f>
+			<haxe_doc>
+		Convert a String to an Int, parsing different possible representations. Returns [null] if could not be parsed.
+	</haxe_doc>
+		</parseInt>
+		<parseFloat public="1" set="method" line="43" static="1">
+			<f a="x">
+				<c path="String"/>
+				<c path="Float"/>
+			</f>
+			<haxe_doc>
+		Convert a String to a Float, parsing different possible reprensations.
+	</haxe_doc>
+		</parseFloat>
+		<random public="1" set="method" line="47" static="1">
+			<f a="x">
+				<c path="Int"/>
+				<c path="Int"/>
+			</f>
+			<haxe_doc>
+		Return a random integer between 0 included and x excluded.
+	</haxe_doc>
+		</random>
+		<haxe_doc>
+	The Std class provides standard methods for manipulating basic types.
+</haxe_doc>
+	</class>
+	<enum path="Void" params="" file="D:\haxe/std/StdTypes.hx" module="StdTypes"><haxe_doc>
+	The standard Void type. Only [null] values can be of the type [Void].
+</haxe_doc></enum>
+	<class path="Float" params="" file="D:\haxe/std/StdTypes.hx" module="StdTypes" extern="1"><haxe_doc>
+	The standard Float type, this is a double-precision IEEE 64bit float.
+</haxe_doc></class>
+	<class path="Int" params="" file="D:\haxe/std/StdTypes.hx" module="StdTypes" extern="1">
+		<extends path="Float"/>
+		<haxe_doc>
+	The standard Int type. Its precision depends on the platform.
+</haxe_doc>
+	</class>
+	<typedef path="Null" params="T" file="D:\haxe/std/StdTypes.hx" module="StdTypes">
+		<c path="Null.T"/>
+		<haxe_doc>
+	[Null] can be useful in two cases. In order to document some methods
+	that accepts or can return a [null] value, or for the Flash9 compiler and AS3
+	generator to distinguish between base values that can be null and others that
+	can't.
+</haxe_doc>
+	</typedef>
+	<enum path="Bool" params="" file="D:\haxe/std/StdTypes.hx" module="StdTypes">
+		<true/>
+		<false/>
+		<haxe_doc>
+	The standard Boolean type is represented as an enum with two choices.
+</haxe_doc>
+	</enum>
+	<class path="Dynamic" params="T" file="D:\haxe/std/StdTypes.hx" module="StdTypes" extern="1"><haxe_doc>
+	Dynamic is an internal compiler type which has special behavior.
+	See the haXe language reference for more informations.
+</haxe_doc></class>
+	<typedef path="Iterator" params="T" file="D:\haxe/std/StdTypes.hx" module="StdTypes">
+		<a>
+			<next set="method"><f a=""><c path="Iterator.T"/></f></next>
+			<hasNext set="method"><f a=""><e path="Bool"/></f></hasNext>
+		</a>
+		<haxe_doc>
+	An Iterator is a structure that permits to list a given container
+	values. It can be used by your own data structures. See the haXe
+	documentation for more informations.
+</haxe_doc>
+	</typedef>
+	<typedef path="Iterable" params="T" file="D:\haxe/std/StdTypes.hx" module="StdTypes">
+		<a><iterator set="method"><f a=""><t path="Iterator"><c path="Iterable.T"/></t></f></iterator></a>
+		<haxe_doc>
+	An Iterable is a data structure which has an iterator() method.
+	See [Lambda] for generic functions on iterable structures.
+</haxe_doc>
+	</typedef>
+	<class path="ArrayAccess" params="T" file="D:\haxe/std/StdTypes.hx" module="StdTypes" extern="1" interface="1"><haxe_doc>
+	ArrayAccess is used to indicate a class that can be accessed using brackets.
+	The type parameter represent the type of the elements stored.
+</haxe_doc></class>
+	<class path="rtAudio.tests.Audioprobe" params="" file="rtAudio/tests/Audioprobe.hx">
+		<main public="1" set="method" line="21" static="1"><f a=""><e path="Void"/></f></main>
+		<apiMap set="method" line="89" static="1"><f a="api">
+	<e path="rtAudio.Api"/>
+	<c path="String"/>
+</f></apiMap>
+		<haxe_doc><![CDATA[
+ * Ported from...
+ * 
+ * audioprobe.cpp
+ * by Gary P. Scavone, 2001
+ * 
+ * <p>Probe audio system and prints device info.</p>
+ ]]></haxe_doc>
+	</class>
+	<enum path="ValueType" params="" file="D:\haxe/std/cpp/_std/Type.hx" module="Type">
+		<TUnknown/>
+		<TObject/>
+		<TNull/>
+		<TInt/>
+		<TFunction/>
+		<TFloat/>
+		<TEnum a="e"><c path="Enum"><d/></c></TEnum>
+		<TClass a="c"><c path="Class"><d/></c></TClass>
+		<TBool/>
+	</enum>
+	<class path="Type" params="" file="D:\haxe/std/cpp/_std/Type.hx">
+		<getClass public="1" params="T" set="method" line="39" static="1">
+			<f a="o">
+				<c path="getClass.T"/>
+				<c path="Class"><c path="getClass.T"/></c>
+			</f>
+			<haxe_doc>
+		Returns the class of a value or [null] if this value is not a Class instance.
+	</haxe_doc>
+		</getClass>
+		<getEnum public="1" set="method" line="50" static="1">
+			<f a="o">
+				<d/>
+				<c path="Enum"><d/></c>
+			</f>
+			<haxe_doc>
+		Returns the enum of a value or [null] if this value is not an Enum instance.
+	</haxe_doc>
+		</getEnum>
+		<getSuperClass public="1" set="method" line="56" static="1">
+			<f a="c">
+				<c path="Class"><d/></c>
+				<c path="Class"><d/></c>
+			</f>
+			<haxe_doc>
+		Returns the super-class of a class, or null if no super class.
+	</haxe_doc>
+		</getSuperClass>
+		<getClassName public="1" set="method" line="60" static="1">
+			<f a="c">
+				<c path="Class"><d/></c>
+				<c path="String"/>
+			</f>
+			<haxe_doc>
+		Returns the complete name of a class.
+	</haxe_doc>
+		</getClassName>
+		<getEnumName public="1" set="method" line="66" static="1">
+			<f a="e">
+				<c path="Enum"><d/></c>
+				<c path="String"/>
+			</f>
+			<haxe_doc>
+		Returns the complete name of an enum.
+	</haxe_doc>
+		</getEnumName>
+		<resolveClass public="1" set="method" line="70" static="1">
+			<f a="name">
+				<c path="String"/>
+				<c path="Class"><d/></c>
+			</f>
+			<haxe_doc>
+		Evaluates a class from a name. The class must have been compiled
+		to be accessible.
+	</haxe_doc>
+		</resolveClass>
+		<resolveEnum public="1" set="method" line="77" static="1">
+			<f a="name">
+				<c path="String"/>
+				<c path="Enum"><d/></c>
+			</f>
+			<haxe_doc>
+		Evaluates an enum from a name. The enum must have been compiled
+		to be accessible.
+	</haxe_doc>
+		</resolveEnum>
+		<createInstance public="1" params="T" set="method" line="84" static="1">
+			<f a="cl:args">
+				<c path="Class"><c path="createInstance.T"/></c>
+				<c path="Array"><d/></c>
+				<c path="createInstance.T"/>
+			</f>
+			<haxe_doc>
+		Creates an instance of the given class with the list of constructor arguments.
+	</haxe_doc>
+		</createInstance>
+		<createEmptyInstance public="1" params="T" set="method" line="90" static="1">
+			<f a="cl">
+				<c path="Class"><c path="createEmptyInstance.T"/></c>
+				<c path="createEmptyInstance.T"/>
+			</f>
+			<haxe_doc>
+		Similar to [Reflect.createInstance] excepts that the constructor is not called.
+		This enables you to create an instance without any side-effect.
+	</haxe_doc>
+		</createEmptyInstance>
+		<createEnum public="1" params="T" set="method" line="94" static="1">
+			<f a="e:constr:?params">
+				<c path="Enum"><c path="createEnum.T"/></c>
+				<c path="String"/>
+				<c path="Array"><d/></c>
+				<c path="createEnum.T"/>
+			</f>
+			<haxe_doc>
+		Create an instance of an enum by using a constructor name and parameters.
+	</haxe_doc>
+		</createEnum>
+		<createEnumIndex public="1" params="T" set="method" line="100" static="1">
+			<f a="e:index:?params">
+				<c path="Enum"><c path="createEnumIndex.T"/></c>
+				<c path="Int"/>
+				<c path="Array"><d/></c>
+				<c path="createEnumIndex.T"/>
+			</f>
+			<haxe_doc>
+		Create an instance of an enum by using a constructor index and parameters.
+	</haxe_doc>
+		</createEnumIndex>
+		<getInstanceFields public="1" set="method" line="106" static="1">
+			<f a="c">
+				<c path="Class"><d/></c>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>
+		Returns the list of instance fields.
+	</haxe_doc>
+		</getInstanceFields>
+		<getClassFields public="1" set="method" line="110" static="1">
+			<f a="c">
+				<c path="Class"><d/></c>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>
+		Returns the list of a class static fields.
+	</haxe_doc>
+		</getClassFields>
+		<getEnumConstructs public="1" set="method" line="114" static="1">
+			<f a="e">
+				<c path="Enum"><d/></c>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>
+		Returns all the available constructor names for an enum.
+	</haxe_doc>
+		</getEnumConstructs>
+		<typeof public="1" set="method" line="118" static="1">
+			<f a="v">
+				<d/>
+				<e path="ValueType"/>
+			</f>
+			<haxe_doc>
+		Returns the runtime type of a value.
+	</haxe_doc>
+		</typeof>
+		<enumEq public="1" params="T" set="method" line="134" static="1">
+			<f a="a:b">
+				<c path="enumEq.T"/>
+				<c path="enumEq.T"/>
+				<e path="Bool"/>
+			</f>
+			<haxe_doc>
+		Recursively compare two enums constructors and parameters.
+	</haxe_doc>
+		</enumEq>
+		<enumConstructor public="1" set="method" line="138" static="1">
+			<f a="e">
+				<d/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>
+		Returns the constructor of an enum
+	</haxe_doc>
+		</enumConstructor>
+		<enumParameters public="1" set="method" line="142" static="1">
+			<f a="e">
+				<d/>
+				<c path="Array"><d/></c>
+			</f>
+			<haxe_doc>
+		Returns the parameters of an enum
+	</haxe_doc>
+		</enumParameters>
+		<enumIndex public="1" get="inline" set="null" line="147" static="1">
+			<f a="e">
+				<d/>
+				<c path="Int"/>
+			</f>
+			<haxe_doc>
+		Returns the index of the constructor of an enum
+	</haxe_doc>
+		</enumIndex>
+		<haxe_doc>
+	The haXe Reflection API enables you to retreive informations about any value,
+	Classes and Enums at runtime.
+</haxe_doc>
+	</class>
+	<class path="haxe.io.Eof" params="" file="D:\haxe/std/haxe/io/Eof.hx">
+		<toString set="method" line="33"><f a=""><c path="String"/></f></toString>
+		<new public="1" set="method" line="31"><f a=""><e path="Void"/></f></new>
+		<haxe_doc>
+	This exception is raised when reading while data is no longer available in the [Input].
+</haxe_doc>
+	</class>
+	<class path="Class" params="T" file="D:\haxe/std/Class.hx" extern="1"><haxe_doc>
+	An abstract type that represents a Class.
+	See [Type] for the haXe Reflection API.
+</haxe_doc></class>
+	<class path="String" params="" file="D:\haxe/std/String.hx" extern="1">
+		<fromCharCode public="1" set="method" static="1"><f a="code">
+	<c path="Int"/>
+	<c path="String"/>
+</f></fromCharCode>
+		<length public="1" set="null">
+			<c path="Int"/>
+			<haxe_doc>
+		The number of characters in the String.
+	</haxe_doc>
+		</length>
+		<toUpperCase public="1" set="method">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>
+		Returns an String where all characters have been uppercased.
+	</haxe_doc>
+		</toUpperCase>
+		<toLowerCase public="1" set="method">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>
+		Returns an String where all characters have been lowercased.
+	</haxe_doc>
+		</toLowerCase>
+		<charAt public="1" set="method">
+			<f a="index">
+				<c path="Int"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>
+		Returns the character at the given position.
+		Returns the empty String if outside of String bounds.
+	</haxe_doc>
+		</charAt>
+		<charCodeAt public="1" set="method">
+			<f a="index">
+				<c path="Int"/>
+				<t path="Null"><c path="Int"/></t>
+			</f>
+			<haxe_doc>
+		Returns the character code at the given position.
+		Returns [null] if outside of String bounds.
+	</haxe_doc>
+		</charCodeAt>
+		<indexOf public="1" set="method">
+			<f a="str:?startIndex">
+				<c path="String"/>
+				<c path="Int"/>
+				<c path="Int"/>
+			</f>
+			<haxe_doc>
+		Returns the index of first occurence of [value]
+		Returns [1-1] if [value] is not found.
+		The optional [startIndex] parameter allows you to specify at which character to start searching.
+		The position returned is still relative to the beginning of the string.
+	</haxe_doc>
+		</indexOf>
+		<lastIndexOf public="1" set="method">
+			<f a="str:?startIndex">
+				<c path="String"/>
+				<c path="Int"/>
+				<c path="Int"/>
+			</f>
+			<haxe_doc>
+		Similar to [indexOf] but returns the latest index.
+	</haxe_doc>
+		</lastIndexOf>
+		<split public="1" set="method">
+			<f a="delimiter">
+				<c path="String"/>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>
+		Split the string using the specified delimiter.
+	</haxe_doc>
+		</split>
+		<substr public="1" set="method">
+			<f a="pos:?len">
+				<c path="Int"/>
+				<c path="Int"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>
+		Returns a part of the String, taking [len] characters starting from [pos].
+		If [len] is not specified, it takes all the remaining characters.
+	</haxe_doc>
+		</substr>
+		<toString public="1" set="method">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>
+		Returns the String itself.
+	</haxe_doc>
+		</toString>
+		<new public="1" set="method">
+			<f a="string">
+				<c path="String"/>
+				<e path="Void"/>
+			</f>
+			<haxe_doc>
+		Creates a copy from a given String.
+	</haxe_doc>
+		</new>
+		<haxe_doc>
+	The basic String class.
+</haxe_doc>
+	</class>
+	<class path="Array" params="T" file="D:\haxe/std/Array.hx" extern="1">
+		<length public="1" set="null">
+			<c path="Int"/>
+			<haxe_doc>
+		The length of the Array
+	</haxe_doc>
+		</length>
+		<concat public="1" set="method">
+			<f a="a">
+				<c path="Array"><c path="Array.T"/></c>
+				<c path="Array"><c path="Array.T"/></c>
+			</f>
+			<haxe_doc>
+		Returns a new Array by appending [a] to [this].
+	</haxe_doc>
+		</concat>
+		<join public="1" set="method">
+			<f a="sep">
+				<c path="String"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>
+		Returns a representation of an array with [sep] for separating each element.
+	</haxe_doc>
+		</join>
+		<pop public="1" set="method">
+			<f a=""><t path="Null"><c path="Array.T"/></t></f>
+			<haxe_doc>
+		Removes the last element of the array and returns it.
+	</haxe_doc>
+		</pop>
+		<push public="1" set="method">
+			<f a="x">
+				<c path="Array.T"/>
+				<c path="Int"/>
+			</f>
+			<haxe_doc>
+		Adds the element [x] at the end of the array.
+	</haxe_doc>
+		</push>
+		<reverse public="1" set="method">
+			<f a=""><e path="Void"/></f>
+			<haxe_doc>
+		Reverse the order of elements of the Array.
+	</haxe_doc>
+		</reverse>
+		<shift public="1" set="method">
+			<f a=""><t path="Null"><c path="Array.T"/></t></f>
+			<haxe_doc>
+		Removes the first element and returns it.
+	</haxe_doc>
+		</shift>
+		<slice public="1" set="method">
+			<f a="pos:?end">
+				<c path="Int"/>
+				<c path="Int"/>
+				<c path="Array"><c path="Array.T"/></c>
+			</f>
+			<haxe_doc>
+		Copies the range of the array starting at [pos] up to,
+		but not including, [end]. Both [pos] and [end] can be
+		negative to count from the end: -1 is the last item in
+		the array.
+	</haxe_doc>
+		</slice>
+		<sort public="1" set="method">
+			<f a="f">
+				<f a=":">
+					<c path="Array.T"/>
+					<c path="Array.T"/>
+					<c path="Int"/>
+				</f>
+				<e path="Void"/>
+			</f>
+			<haxe_doc><![CDATA[
+		Sort the Array according to the comparison function [f].
+		[f(x,y)] should return [0] if [x == y], [>0] if [x > y]
+		and [<0] if [x < y].
+	]]></haxe_doc>
+		</sort>
+		<splice public="1" set="method">
+			<f a="pos:len">
+				<c path="Int"/>
+				<c path="Int"/>
+				<c path="Array"><c path="Array.T"/></c>
+			</f>
+			<haxe_doc>
+		Removes [len] elements starting from [pos] an returns them.
+	</haxe_doc>
+		</splice>
+		<toString public="1" set="method">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>
+		Returns a displayable representation of the Array content.
+	</haxe_doc>
+		</toString>
+		<unshift public="1" set="method">
+			<f a="x">
+				<c path="Array.T"/>
+				<e path="Void"/>
+			</f>
+			<haxe_doc>
+		Adds the element [x] at the start of the array.
+	</haxe_doc>
+		</unshift>
+		<insert public="1" set="method">
+			<f a="pos:x">
+				<c path="Int"/>
+				<c path="Array.T"/>
+				<e path="Void"/>
+			</f>
+			<haxe_doc>
+		Inserts the element [x] at the position [pos].
+		All elements after [pos] are moved one index ahead.
+	</haxe_doc>
+		</insert>
+		<remove public="1" set="method">
+			<f a="x">
+				<c path="Array.T"/>
+				<e path="Bool"/>
+			</f>
+			<haxe_doc>
+		Removes the first occurence of [x].
+		Returns false if [x] was not present.
+		Elements are compared by using standard equality.
+	</haxe_doc>
+		</remove>
+		<copy public="1" set="method">
+			<f a=""><c path="Array"><c path="Array.T"/></c></f>
+			<haxe_doc>
+		Returns a copy of the Array. The values are not
+		copied, only the Array structure.
+	</haxe_doc>
+		</copy>
+		<iterator public="1" set="method">
+			<f a=""><t path="Iterator"><t path="Null"><c path="Array.T"/></t></t></f>
+			<haxe_doc>
+		Returns an iterator of the Array values.
+	</haxe_doc>
+		</iterator>
+		<new public="1" set="method">
+			<f a=""><e path="Void"/></f>
+			<haxe_doc>
+		Creates a new Array.
+	</haxe_doc>
+		</new>
+		<haxe_doc>
+	An Array is a storage for values. You can access it using indexes or
+	with its API. On the server side, it's often better to use a [List] which
+	is less memory and CPU consuming, unless you really need indexed access.
+</haxe_doc>
+	</class>
+	<class path="rtAudio.tests.Playraw" params="" file="rtAudio/tests/Playraw.hx">
+		<usage set="method" line="25" static="1"><f a=""><e path="Void"/></f></usage>
+		<output set="method" line="38" static="1"><f a="rtAudio">
+	<c path="rtAudio.RtAudio"/>
+	<c path="Int"/>
+</f></output>
+		<dac static="1"><c path="rtAudio.RtAudio"/></dac>
+		<main public="1" set="method" line="67" static="1"><f a=""><e path="Void"/></f></main>
+		<haxe_doc><![CDATA[
+ * Ported from...
+ * 
+ * playraw.cpp
+ * by Gary P. Scavone, 2007
+ * 
+ * <p>Play a specified raw file.  It is necessary
+ * that the file be of the same data format as
+ * defined below.</p>
+ ]]></haxe_doc>
+	</class>
+	<typedef path="rtAudio.tests.OutputData" params="" file="rtAudio/tests/Playraw.hx" module="rtAudio.tests.Playraw"><a>
+	<fd><c path="cpp.io.FileInput"/></fd>
+	<channels><c path="Int"/></channels>
+</a></typedef>
+	<typedef path="haxe.PosInfos" params="" file="D:\haxe/std/haxe/PosInfos.hx"><a>
+	<methodName><c path="String"/></methodName>
+	<lineNumber><c path="Int"/></lineNumber>
+	<fileName><c path="String"/></fileName>
+	<customParams><c path="Array"><d/></c></customParams>
+	<className><c path="String"/></className>
+</a></typedef>
+	<class path="cpp.Sys" params="" file="D:\haxe/std/cpp/Sys.hx">
+		<args public="1" set="method" line="5" static="1"><f a=""><c path="Array"><c path="String"/></c></f></args>
+		<getEnv public="1" set="method" line="9" static="1"><f a="s">
+	<c path="String"/>
+	<c path="String"/>
+</f></getEnv>
+		<putEnv public="1" set="method" line="16" static="1"><f a="s:v">
+	<c path="String"/>
+	<c path="String"/>
+	<e path="Void"/>
+</f></putEnv>
+		<sleep public="1" set="method" line="20" static="1"><f a="seconds">
+	<c path="Float"/>
+	<e path="Void"/>
+</f></sleep>
+		<setTimeLocale public="1" set="method" line="24" static="1"><f a="loc">
+	<c path="String"/>
+	<e path="Bool"/>
+</f></setTimeLocale>
+		<getCwd public="1" set="method" line="28" static="1"><f a=""><c path="String"/></f></getCwd>
+		<setCwd public="1" set="method" line="32" static="1"><f a="s">
+	<c path="String"/>
+	<e path="Void"/>
+</f></setCwd>
+		<systemName public="1" set="method" line="36" static="1"><f a=""><c path="String"/></f></systemName>
+		<escapeArgument public="1" set="method" line="40" static="1"><f a="arg">
+	<c path="String"/>
+	<c path="String"/>
+</f></escapeArgument>
+		<command public="1" set="method" line="54" static="1"><f a="cmd:?args">
+	<c path="String"/>
+	<c path="Array"><c path="String"/></c>
+	<c path="Int"/>
+</f></command>
+		<exit public="1" set="method" line="63" static="1"><f a="code">
+	<c path="Int"/>
+	<e path="Void"/>
+</f></exit>
+		<time public="1" set="method" line="67" static="1"><f a=""><c path="Float"/></f></time>
+		<cpuTime public="1" set="method" line="71" static="1"><f a=""><c path="Float"/></f></cpuTime>
+		<executablePath public="1" set="method" line="75" static="1"><f a=""><c path="String"/></f></executablePath>
+		<environment public="1" set="method" line="79" static="1"><f a=""><c path="Hash"><c path="String"/></c></f></environment>
+		<get_env line="91" static="1"><f a="">
+	<c path="String"/>
+	<c path="String"/>
+</f></get_env>
+		<put_env line="92" static="1"><f a=":">
+	<c path="String"/>
+	<c path="String"/>
+	<unknown/>
+</f></put_env>
+		<_sleep line="93" static="1"><f a="">
+	<c path="Float"/>
+	<unknown/>
+</f></_sleep>
+		<set_time_locale line="94" static="1"><f a="">
+	<c path="String"/>
+	<e path="Bool"/>
+</f></set_time_locale>
+		<get_cwd line="95" static="1"><f a=""><c path="String"/></f></get_cwd>
+		<set_cwd line="96" static="1"><f a="">
+	<c path="String"/>
+	<unknown/>
+</f></set_cwd>
+		<sys_string line="97" static="1"><f a=""><c path="String"/></f></sys_string>
+		<sys_command line="98" static="1"><f a="">
+	<c path="String"/>
+	<c path="Int"/>
+</f></sys_command>
+		<sys_exit line="99" static="1"><f a="">
+	<c path="Int"/>
+	<unknown/>
+</f></sys_exit>
+		<sys_time line="100" static="1"><f a=""><c path="Float"/></f></sys_time>
+		<sys_cpu_time line="101" static="1"><f a=""><c path="Float"/></f></sys_cpu_time>
+		<sys_exe_path line="102" static="1"><f a=""><c path="String"/></f></sys_exe_path>
+		<sys_env line="103" static="1"><f a=""><c path="Array"><c path="String"/></c></f></sys_env>
+	</class>
+	<typedef path="rtAudio.DeviceInfo" params="" file="rtAudio/DeviceInfo.hx">
+		<a>
+			<sampleRates><c path="Array"><c path="Int"/></c></sampleRates>
+			<probed><e path="Bool"/></probed>
+			<outputChannels><c path="Int"/></outputChannels>
+			<nativeFormats><c path="Array"><e path="rtAudio.RtAudioFormat"/></c></nativeFormats>
+			<name><c path="String"/></name>
+			<isDefaultOutput><e path="Bool"/></isDefaultOutput>
+			<isDefaultInput><e path="Bool"/></isDefaultInput>
+			<inputChannels><c path="Int"/></inputChannels>
+			<duplexChannels><c path="Int"/></duplexChannels>
+		</a>
+		<haxe_doc>
+ * The public device information structure for returning queried values.
+ </haxe_doc>
+	</typedef>
+	<class path="haxe.io.Unsigned_char__" params="" file="D:\haxe/std/haxe/io/BytesData.hx" module="haxe.io.BytesData" extern="1"/>
+	<typedef path="haxe.io.BytesData" params="" file="D:\haxe/std/haxe/io/BytesData.hx"><c path="Array"><c path="haxe.io.Unsigned_char__"/></c></typedef>
+	<class path="Hash" params="T" file="D:\haxe/std/cpp/_std/Hash.hx">
+		<h><d/></h>
+		<set public="1" set="method" line="33">
+			<f a="key:value">
+				<c path="String"/>
+				<c path="Hash.T"/>
+				<e path="Void"/>
+			</f>
+			<haxe_doc>
+		Set a value for the given key.
+	</haxe_doc>
+		</set>
+		<get public="1" set="method" line="37">
+			<f a="key">
+				<c path="String"/>
+				<t path="Null"><c path="Hash.T"/></t>
+			</f>
+			<haxe_doc>
+		Get a value for the given key.
+	</haxe_doc>
+		</get>
+		<exists public="1" set="method" line="41">
+			<f a="key">
+				<c path="String"/>
+				<e path="Bool"/>
+			</f>
+			<haxe_doc>
+		Tells if a value exists for the given key.
+		In particular, it's useful to tells if a key has
+		a [null] value versus no value.
+	</haxe_doc>
+		</exists>
+		<remove public="1" set="method" line="45">
+			<f a="key">
+				<c path="String"/>
+				<e path="Bool"/>
+			</f>
+			<haxe_doc>
+		Removes a hashtable entry. Returns [true] if
+		there was such entry.
+	</haxe_doc>
+		</remove>
+		<keys public="1" set="method" line="52">
+			<f a=""><t path="Iterator"><c path="String"/></t></f>
+			<haxe_doc>
+		Returns an iterator of all keys in the hashtable.
+	</haxe_doc>
+		</keys>
+		<iterator public="1" set="method" line="61">
+			<f a=""><t path="Iterator"><c path="Hash.T"/></t></f>
+			<haxe_doc>
+		Returns an iterator of all values in the hashtable.
+	</haxe_doc>
+		</iterator>
+		<toString public="1" set="method" line="75">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>
+		Returns an displayable representation of the hashtable content.
+	</haxe_doc>
+		</toString>
+		<new public="1" set="method" line="29"><f a=""><e path="Void"/></f></new>
+		<haxe_doc>
+	Hashtable over a set of elements, using [String] as keys.
+	Other kind of keys are not possible on all platforms since they
+	can't always be implemented efficiently.
+</haxe_doc>
+	</class>
+	<class path="Main" params="" file="Main.hx"><main set="method" line="11" static="1"><f a=""><e path="Void"/></f></main></class>
+</haxe>

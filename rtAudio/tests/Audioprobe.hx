@@ -4,7 +4,7 @@
  * audioprobe.cpp
  * by Gary P. Scavone, 2001
  * 
- * Probe audio system and prints device info.
+ * <p>Probe audio system and prints device info.</p>
  */
 
 package rtAudio.tests;

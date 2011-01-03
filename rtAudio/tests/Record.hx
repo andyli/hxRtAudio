@@ -4,9 +4,9 @@
  * record.cpp
  * by Gary P. Scavone, 2007
  * 
- * This program records audio from a device and writes it to a
+ * <p>This program records audio from a device and writes it to a
  * header-less binary file.  Use the 'playraw', with the same
- * parameters and format settings, to playback the audio.
+ * parameters and format settings, to playback the audio.</p>
  */
 
 package rtAudio.tests;
@@ -18,13 +18,6 @@ import cpp.io.FileOutput;
 import rtAudio.RtAudio;
 import rtAudio.Api;
 import rtAudio.RtAudioFormat;
-
-typedef InputData = {
-	var buffer:Array<Int>;
-	var totalFrames:Int;
-	var frameCounter:Int;
-	var channels:Int;
-};
 
 class Record 
 {	
@@ -138,3 +131,10 @@ class Record
 	}
 	
 }
+
+typedef InputData = {
+	var buffer:Array<Int>;
+	var totalFrames:Int;
+	var frameCounter:Int;
+	var channels:Int;
+};

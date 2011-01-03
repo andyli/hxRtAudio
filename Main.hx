@@ -1,14 +1,19 @@
 package ;
 
+import rtAudio.tests.Audioprobe;
+import rtAudio.tests.Record;
+import rtAudio.tests.Playraw;
+import rtAudio.tests.Testall;
+
 class Main 
 {
 	
 	static function main() 
 	{
-		//rtAudio.tests.Audioprobe.main();
-		//rtAudio.tests.Record.main();
-		//rtAudio.tests.Playraw.main();
-		rtAudio.tests.Testall.main();
+		Audioprobe.main();
+		//Record.main();
+		//Playraw.main();
+		//Testall.main();
 	}
 	
 }

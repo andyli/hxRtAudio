@@ -1,0 +1,6 @@
+-xml doc.xml
+-cpp bin
+-main Main
+-lib hxcpp
+
+-cmd chxdoc -o doc --title="hxRtAudio" --subtitle="haXe binding to RtAudio, for cross-platform real-time audio input/output." -f haxe -f cpp --ignoreRoot=true doc.xml

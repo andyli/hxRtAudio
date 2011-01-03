@@ -238,14 +238,22 @@ DEFINE_PRIM(_RtAudio_startStream,1);
 
 value _RtAudio_stopStream(value a) {
 	RtAudio* rtAudio = (RtAudio*) val_data(a);
-	rtAudio->stopStream();
+	try {
+		rtAudio->stopStream();
+	} catch (RtError &error) {
+		error.printMessage();
+	}
 	return alloc_null();
 }
 DEFINE_PRIM(_RtAudio_stopStream,1);
 
 value _RtAudio_abortStream(value a) {
 	RtAudio* rtAudio = (RtAudio*) val_data(a);
-	rtAudio->abortStream();
+	try {
+		rtAudio->abortStream();
+	} catch (RtError &error) {
+		error.printMessage();
+	}
 	return alloc_null();
 }
 DEFINE_PRIM(_RtAudio_abortStream,1);
@@ -264,19 +272,34 @@ DEFINE_PRIM(_RtAudio_isStreamRunning,1);
 
 value _RtAudio_getStreamTime(value a) {
 	RtAudio* rtAudio = (RtAudio*) val_data(a);
-	return alloc_float(rtAudio->getStreamTime());
+	try {
+		return alloc_float(rtAudio->getStreamTime());
+	} catch (RtError &error) {
+		error.printMessage();
+		return alloc_float(0);
+	}
 }
 DEFINE_PRIM(_RtAudio_getStreamTime,1);
 
 value _RtAudio_getStreamLatency(value a) {
 	RtAudio* rtAudio = (RtAudio*) val_data(a);
-	return alloc_int(rtAudio->getStreamLatency());
+	try {
+		return alloc_int(rtAudio->getStreamLatency());
+	} catch (RtError &error) {
+		error.printMessage();
+		return alloc_int(0);
+	}
 }
 DEFINE_PRIM(_RtAudio_getStreamLatency,1);
 
 value _RtAudio_getStreamSampleRate(value a) {
 	RtAudio* rtAudio = (RtAudio*) val_data(a);
-	return alloc_int(rtAudio->getStreamSampleRate());
+	try {
+		return alloc_int(rtAudio->getStreamSampleRate());
+	} catch (RtError &error) {
+		error.printMessage();
+		return alloc_int(0);
+	}
 }
 DEFINE_PRIM(_RtAudio_getStreamSampleRate,1);
 
