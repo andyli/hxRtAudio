@@ -7,3 +7,5 @@ Supports c++ target on Windows only. Mac/Linux support is planned.
 h2. Usage
 
 There are several examples under the package @rtAudio.tests@.
+
+You can also view the "online documentation":http://andyli.github.com/hxRtAudio/.

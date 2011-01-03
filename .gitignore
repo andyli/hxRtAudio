@@ -2,6 +2,7 @@ bin
 project/obj
 project/all_objs
 project/vc100.pdb
+doc
 tmp
 
 .DS_Store
