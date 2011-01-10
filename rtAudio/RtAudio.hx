@@ -1,10 +1,17 @@
 package rtAudio;
 
+#if !cpp
+#error
+#end
+
 import cpp.Lib;
+import cpp.vm.Thread;
+import cpp.vm.Lock;
 import rtAudio.Api;
 import rtAudio.RtAudioFormat;
 import rtAudio.RtAudioStreamFlags;
 
+@:require(HXCPP_MULTI_THREADED)
 class RtAudio 
 {	
 	/**
@@ -353,6 +360,13 @@ class RtAudio
 		if (options != null) {
 			options.numberOfBuffers = optionsValue.numberOfBuffers;
 		}
+		
+		if (thread != null) {
+			thread.sendMessage(false); //let the loop breaks.
+			thread = null;
+		}
+		thread = Thread.create(threadCallback);
+		lock = new Lock();
 	}
 	
 	/**
@@ -416,6 +430,42 @@ class RtAudio
 	 * You should cast it to Array<Int> or Array<Float> depending on the format you specified.
 	 */
 	public var inputBuffer(default, null):Dynamic;
+	
+	
+	/**
+	 * The Thread created to call streamCallback when needed.
+	 */
+	var thread:Thread;
+	
+	/**
+	 * It is locked when streamCallback is not called yet.
+	 */
+	var lock:Lock;
+	
+	/**
+	 * The reture value of streamCallback is stored here temporary.
+	 */
+	var lastStreamCallBackResult:Int;
+	
+	/**
+	 * Function for the thread.
+	 */
+	function threadCallback():Void {
+		while (Thread.readMessage(true)) {
+			lastStreamCallBackResult = streamCallback(this);
+			lock.release();
+		}
+	}
+	
+	/**
+	 * Called by the ndll.
+	 * @return The reture value of streamCallback.
+	 */
+	function threadCallbackRun():Int {
+		thread.sendMessage(true);
+		lock.wait();
+		return lastStreamCallBackResult;
+	}
 	
 	static var _RtAudio_getCompiledApi:Void->Array<Dynamic> = Lib.load("hxRtAudio", "_RtAudio_getCompiledApi", 0);
 	static var _RtAudio_new = Lib.load("hxRtAudio", "_RtAudio_new", 1);

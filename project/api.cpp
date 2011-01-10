@@ -15,6 +15,7 @@ const int id_inputParameters = val_id("inputParameters");
 const int id_outputParameters = val_id("outputParameters");
 const int id_nChannels = val_id("nChannels");
 const int id_formatValue = val_id("formatValue");
+const int id_threadCallbackRun = val_id("threadCallbackRun");
 
 int callback
 (
@@ -24,7 +25,7 @@ int callback
 	double streamTime,
 	RtAudioStreamStatus status,
 	void *data
-) {
+) {	
 	value rtAudioHandle = (value) data;
 
 	value outAry = val_field(rtAudioHandle, id_outputBuffer);
@@ -32,6 +33,8 @@ int callback
 	int format = val_field_numeric(rtAudioHandle, id_formatValue);
 	
 	alloc_field(rtAudioHandle, id_status, alloc_int(status));
+	
+	gc_enter_blocking();
 	
 	if (inputBuffer){
 		unsigned int inAryLen = nFrames * val_field_numeric(val_field(rtAudioHandle, id_inputParameters), id_nChannels);
@@ -82,8 +85,12 @@ int callback
 				;
 		}
 	}
-
-	int returnVal = val_int(val_ocall1(rtAudioHandle, id_streamCallback, rtAudioHandle));
+	
+	gc_exit_blocking();
+	
+	int returnVal = val_int(val_ocall0(rtAudioHandle, id_threadCallbackRun));
+	
+	gc_enter_blocking();
 	
 	if (outputBuffer){
 		unsigned int outAryLen = nFrames * val_field_numeric(val_field(rtAudioHandle, id_outputParameters), id_nChannels);
@@ -134,6 +141,8 @@ int callback
 				;
 		}
 	}
+	
+	gc_exit_blocking();
 	
 	return returnVal;
 }

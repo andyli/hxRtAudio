@@ -17,7 +17,7 @@
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="" />
+    <option directives="HXCPP_MULTI_THREADED" />
     <option flashStrict="False" />
     <option mainClass="Main" />
     <option enabledebug="False" />
