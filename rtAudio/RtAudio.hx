@@ -445,7 +445,12 @@ class RtAudio
 	/**
 	 * The reture value of streamCallback is stored here temporary.
 	 */
-	var lastStreamCallBackResult:Int;
+	var lastStreamCallBackResult:Dynamic; //Int
+	
+	/**
+	 * Store a dynamic variable of true for threadCallbackRun, to avoid allocating new object.
+	 */
+	static var TRUE:Dynamic = true;
 	
 	/**
 	 * Function for the thread.
@@ -461,8 +466,8 @@ class RtAudio
 	 * Called by the ndll.
 	 * @return The reture value of streamCallback.
 	 */
-	function threadCallbackRun():Int {
-		thread.sendMessage(true);
+	function threadCallbackRun():Dynamic {
+		thread.sendMessage(TRUE);
 		lock.wait();
 		return lastStreamCallBackResult;
 	}
