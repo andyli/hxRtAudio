@@ -1,14 +1,1 @@
-#-cmd cd project
-#-cmd haxelib run hxcpp build.xml
-#-cmd cd ..
-
--cpp bin
--main rtAudio.tests.Testall
-#-lib hxRtAudio
-#-debug
--D HXCPP_MULTI_THREADED
-
-#-cmd cp ndll/Linux/*.* bin
-
--cmd cd bin
--cmd ./Testall 2 44100
+compile-mac.hxml

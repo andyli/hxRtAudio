@@ -21,6 +21,11 @@
 		<compilerflag value = "-D_CONSOLE" if="windows"/>
 		<compilerflag value = "-D__WINDOWS_DS__" if="windows"/>
 		<compilerflag value = "-D__WINDOWS_ASIO__" if="windows"/>
+
+		
+		<compilerflag value = "-lpthread" if="macos"/>
+		<compilerflag value = "-D__MACOSX_CORE_" if="macos"/>
+		
 		
 		<compilerflag value = "-D__LINUX_OSS__" if="linux"/>
 		<!--
@@ -52,6 +57,9 @@
 		<lib name="odbc32.lib" if="windows"/>
 		<lib name="odbccp32.lib" if="windows"/>
 		<lib name="dsound.lib" if="windows"/>
+
+		
+		<vflag name="-framework" value="CoreAudio" if="macos"/>
 	</target>
 
 	<target id="default">
