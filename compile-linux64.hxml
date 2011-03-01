@@ -1,13 +1,14 @@
 #-cmd cd project
 #-cmd rm -r obj
-#-cmd haxelib run hxcpp build.xml
+#-cmd haxelib run hxcpp build.xml -DHXCPP_M64
 #-cmd cd ..
 
--cpp bin
+-cpp bin64
 -main rtAudio.tests.Testall
 -D HXCPP_MULTI_THREADED
+-D HXCPP_M64
 
-#-cmd cp ndll/Linux/*.* bin
+#-cmd cp ndll/Linux64/*.* bin
 
--cmd cd bin
+-cmd cd bin64
 -cmd ./Testall 2 44100

@@ -29,12 +29,8 @@
 		-->
 		
 		<compilerflag value = "-D__LINUX_OSS__" if="linux"/>
-		<!--
-		<compilerflag value = "-lasound" if="linux"/>
-		<compilerflag value = "-D__LINUX_ALSA__" if="linux"/>
-		<compilerflag value = "-ljack" if="linux"/>
-		<compilerflag value = "-D__UNIX_JACK__" unless="windows"/>
-		-->
+		<!--<compilerflag value = "-D__LINUX_ALSA__" if="linux"/>-->
+		<compilerflag value = "-D__UNIX_JACK__" if="linux"/>
 		
 		<compilerflag value = "-DTARGET_LINUX" if="linux"/>
 	</files>
@@ -63,6 +59,10 @@
 		<lib name="-lpthread" if="macos"/>
 		<vflag name="-framework" value="CoreAudio" if="macos"/>
 		<vflag name="-framework" value="CoreFoundation" if="macos"/>
+		
+		
+		<!--<lib name="-lasound" if="linux"/>-->
+		<lib name="-ljack" if="linux"/>
 	</target>
 
 	<target id="default">
