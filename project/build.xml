@@ -22,8 +22,6 @@
 		<compilerflag value = "-D__WINDOWS_DS__" if="windows"/>
 		<compilerflag value = "-D__WINDOWS_ASIO__" if="windows"/>
 
-		
-		<compilerflag value = "-lpthread" if="macos"/>
 		<compilerflag value = "-D__MACOSX_CORE_" if="macos"/>
 		<!--
 		<compilerflag value = "-ljack" if="macos"/>
@@ -62,7 +60,9 @@
 		<lib name="dsound.lib" if="windows"/>
 
 		
+		<lib name="-lpthread" if="macos"/>
 		<vflag name="-framework" value="CoreAudio" if="macos"/>
+		<vflag name="-framework" value="CoreFoundation" if="macos"/>
 	</target>
 
 	<target id="default">

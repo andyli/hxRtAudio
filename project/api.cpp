@@ -4,18 +4,6 @@
 #include <vector>
 #include "RtAudio.h"
 
-const int id_outputBuffer = val_id("outputBuffer");
-const int id_inputBuffer = val_id("inputBuffer");
-const int id_nFrames = val_id("nFrames");
-const int id_streamTime = val_id("streamTime");
-const int id_status = val_id("status");
-const int id_userData = val_id("userData");
-const int id_streamCallback = val_id("streamCallback");
-const int id_inputParameters = val_id("inputParameters");
-const int id_outputParameters = val_id("outputParameters");
-const int id_nChannels = val_id("nChannels");
-const int id_formatValue = val_id("formatValue");
-const int id_threadCallbackRun = val_id("threadCallbackRun");
 
 int callback
 (
@@ -26,6 +14,20 @@ int callback
 	RtAudioStreamStatus status,
 	void *data
 ) {	
+
+	const static int id_outputBuffer = val_id("outputBuffer");
+	const static int id_inputBuffer = val_id("inputBuffer");
+	const static int id_nFrames = val_id("nFrames");
+	const static int id_streamTime = val_id("streamTime");
+	const static int id_status = val_id("status");
+	const static int id_userData = val_id("userData");
+	const static int id_streamCallback = val_id("streamCallback");
+	const static int id_inputParameters = val_id("inputParameters");
+	const static int id_outputParameters = val_id("outputParameters");
+	const static int id_nChannels = val_id("nChannels");
+	const static int id_formatValue = val_id("formatValue");
+	const static int id_threadCallbackRun = val_id("threadCallbackRun");
+
 	value rtAudioHandle = (value) data;
 
 	value outAry = val_field(rtAudioHandle, id_outputBuffer);

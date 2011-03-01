@@ -1,9 +1,10 @@
 -cmd cd project
+-cmd rm -r obj
 -cmd haxelib run hxcpp build.xml -DHXCPP_M64
 -cmd cd ..
 
 -cpp bin64
--main rtAudio.tests.Testall
+-main rtAudio.tests.Audioprobe
 #-lib hxRtAudio
 #-debug
 -D HXCPP_MULTI_THREADED
@@ -12,4 +13,4 @@
 -cmd cp ndll/Mac64/*.* bin64
 
 -cmd cd bin64
--cmd ./Testall 2 44100
+-cmd ./Audioprobe
