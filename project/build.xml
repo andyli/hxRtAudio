@@ -22,11 +22,8 @@
 		<compilerflag value = "-D__WINDOWS_DS__" if="windows"/>
 		<compilerflag value = "-D__WINDOWS_ASIO__" if="windows"/>
 
-		<compilerflag value = "-D__MACOSX_CORE_" if="macos"/>
-		<!--
-		<compilerflag value = "-ljack" if="macos"/>
+		<compilerflag value = "-D__MACOSX_CORE__" if="macos"/>
 		<compilerflag value = "-D__UNIX_JACK__" if="macos"/>
-		-->
 		
 		<compilerflag value = "-D__LINUX_OSS__" if="linux"/>
 		<!--<compilerflag value = "-D__LINUX_ALSA__" if="linux"/>-->
@@ -57,6 +54,7 @@
 
 		
 		<lib name="-lpthread" if="macos"/>
+		<lib name="-ljack" if="macos"/>
 		<vflag name="-framework" value="CoreAudio" if="macos"/>
 		<vflag name="-framework" value="CoreFoundation" if="macos"/>
 		
