@@ -9,6 +9,9 @@ h2. Supported platforms
 * Windows
 ** DirectSound
 ** ASIO
+* Mac
+** CoreAudio
+** Jack
 * Linux
 ** OpenSound ("Ubuntu instruction":https://help.ubuntu.com/community/OpenSound)
 ** Jack
