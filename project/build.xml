@@ -26,10 +26,8 @@
 		<compilerflag value = "-D__UNIX_JACK__" if="macos"/>
 		
 		<compilerflag value = "-D__LINUX_OSS__" if="linux"/>
-		<!--<compilerflag value = "-D__LINUX_ALSA__" if="linux"/>-->
+		<compilerflag value = "-D__LINUX_ALSA__" if="linux"/>
 		<compilerflag value = "-D__UNIX_JACK__" if="linux"/>
-		
-		<compilerflag value = "-DTARGET_LINUX" if="linux"/>
 	</files>
 	
 	<target id="hxRtAudio.ndll" tool="linker" toolid="dll" output="hxRtAudio">
@@ -59,7 +57,7 @@
 		<vflag name="-framework" value="CoreFoundation" if="macos"/>
 		
 		
-		<!--<lib name="-lasound" if="linux"/>-->
+		<lib name="-lasound" if="linux"/>
 		<lib name="-ljack" if="linux"/>
 	</target>
 

@@ -4,10 +4,10 @@
 #-cmd cd ..
 
 -cpp bin
--main rtAudio.tests.Testall
+-main rtAudio.tests.Audioprobe
 -D HXCPP_MULTI_THREADED
 
 #-cmd cp ndll/Linux/*.* bin
 
 -cmd cd bin
--cmd ./Testall 2 44100
+-cmd ./Audioprobe 2 44100
