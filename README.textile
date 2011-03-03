@@ -6,13 +6,13 @@ Supports c++ target only.
 
 h2. Supported platforms
 
-* Windows
+* Windows(32bit)
 ** Comiled APIs: *DirectSound*, *ASIO*
-* Mac
+* Mac(32/64bit)
 ** Comiled APIs: *CoreAudio*, *Jack*
 ** You may have to install "Jack OSX":http://www.jackosx.com/ (even if you're not using Jack API).
-* Linux
-** Comiled APIs: *ALSA*(32bit only), *OpenSound* ("Ubuntu instruction":https://help.ubuntu.com/community/OpenSound), *Jack*
+* Linux(32/64bit)
+** Comiled APIs: *ALSA*, *OpenSound* ("Ubuntu instruction":https://help.ubuntu.com/community/OpenSound), *Jack*
 
 h2. Usage
 
