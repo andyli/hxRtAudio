@@ -1,7 +1,7 @@
--cmd cd project
--cmd rm -r obj
--cmd haxelib run hxcpp build.xml
--cmd cd ..
+#-cmd cd project
+#-cmd rm -r obj
+#-cmd haxelib run hxcpp build.xml
+#-cmd cd ..
 
 -cpp bin
 -main rtAudio.tests.Audioprobe
