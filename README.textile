@@ -13,7 +13,7 @@ h2. Supported platforms
 ** You may have to install "Jack OSX":http://www.jackosx.com/ (even if you're not using Jack API).
 * Linux(32/64bit)
 ** Compiled APIs: *ALSA*, *OpenSound*, *Jack*
-** For OpenSound: "Instruction for configuating OpenSound on Ubuntu":https://help.ubuntu.com/community/OpenSound
+** For OpenSound: "Instruction for configuring OpenSound on Ubuntu":https://help.ubuntu.com/community/OpenSound
 
 h2. Usage
 
