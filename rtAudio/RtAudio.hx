@@ -1,9 +1,5 @@
 package rtAudio;
 
-#if !cpp
-#error
-#end
-
 import cpp.Lib;
 import cpp.vm.Thread;
 import cpp.vm.Lock;
@@ -11,7 +7,7 @@ import rtAudio.Api;
 import rtAudio.RtAudioFormat;
 import rtAudio.RtAudioStreamFlags;
 
-@:require(HXCPP_MULTI_THREADED)
+#if cpp @:require(HXCPP_MULTI_THREADED) #end
 class RtAudio 
 {	
 	/**
@@ -21,9 +17,16 @@ class RtAudio
 	 */
 	static public function getCompiledApi():Array<Api> {
 		var apis = [];
-		for (i in _RtAudio_getCompiledApi()) {
-			apis.push(Type.createEnumIndex(Api, i));
-		}
+		#if neko
+			var ary:Array<Int> = neko.Lib.nekoToHaxe(_RtAudio_getCompiledApi());
+			for (i in ary) {
+				apis.push(Type.createEnumIndex(Api, i));
+			}
+		#else
+			for (i in _RtAudio_getCompiledApi()) {
+				apis.push(Type.createEnumIndex(Api, i));
+			}
+		#end
 		return apis;
 	}
 	
@@ -89,6 +92,10 @@ class RtAudio
 			nativeFormats.push(RTAUDIO_FLOAT64);
 		
 		info.nativeFormats = nativeFormats;
+		
+		#if neko
+		info.sampleRates = neko.Lib.nekoToHaxe(info.sampleRates);
+		#end
 		return info;
 	}
 	

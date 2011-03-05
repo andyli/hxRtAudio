@@ -4,11 +4,10 @@
 
 -cpp bin
 -main rtAudio.tests.Testall
-#-lib hxRtAudio
-#-debug
+-lib hxRtAudio
 -D HXCPP_MULTI_THREADED
 
-#-cmd cp ndll/Windows/*.* bin
+-cmd xcopy /e /i /y "ndll\Windows\*.*" "bin"
 
 -cmd cd bin
 -cmd Testall.exe 2 44100

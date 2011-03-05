@@ -4,12 +4,11 @@
 #-cmd cd ..
 
 -cpp bin
--main rtAudio.tests.Audioprobe
-#-lib hxRtAudio
-#-debug
+-main rtAudio.tests.Testall
+-lib hxRtAudio
 -D HXCPP_MULTI_THREADED
 
 -cmd cp ndll/Mac/*.* bin
 
 -cmd cd bin
--cmd ./Audioprobe
+-cmd ./Testall 2 44100
