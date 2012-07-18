@@ -5,10 +5,9 @@
 
 -cpp bin
 -main rtAudio.tests.Testall
--lib hxRtAudio
--D HXCPP_MULTI_THREADED
+-cp src
+#-lib hxRtAudio
 
 -cmd cp ndll/Mac/*.* bin
 
--cmd cd bin
--cmd ./Testall 2 44100
+-cmd (cd bin && ./Testall 2 44100)

@@ -25,12 +25,36 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
 #define IMPLEMENT_API
 #include <hx/CFFI.h>
+#include <hx/Thread.h>
 
 #include <vector>
 #include "RtAudio.h"
 
+
+
+const static int id_outputBuffer = val_id("outputBuffer");
+const static int id_inputBuffer = val_id("inputBuffer");
+const static int id_nFrames = val_id("nFrames");
+const static int id_streamTime = val_id("streamTime");
+const static int id_status = val_id("status");
+const static int id_userData = val_id("userData");
+const static int id_streamCallback = val_id("streamCallback");
+const static int id_inputParameters = val_id("inputParameters");
+const static int id_outputParameters = val_id("outputParameters");
+const static int id_nChannels = val_id("nChannels");
+const static int id_formatValue = val_id("formatValue");
+const static int id_threadCallbackRun = val_id("threadCallbackRun");
+const static int id_semaphoreWait = val_id("semaphoreWait");
+const static int id_semaphoreReady = val_id("semaphoreReady");
+const static int id_lastStreamCallBackResult = val_id("lastStreamCallBackResult");
+
+struct _RtAudio_CallbackInfoData {
+	value rtAudioHandle;
+	value hxRtAudioInstance;
+};
 
 int callback
 (
@@ -40,34 +64,21 @@ int callback
 	double streamTime,
 	RtAudioStreamStatus status,
 	void *data
-) {	
+) {
 
-	const static int id_outputBuffer = val_id("outputBuffer");
-	const static int id_inputBuffer = val_id("inputBuffer");
-	const static int id_nFrames = val_id("nFrames");
-	const static int id_streamTime = val_id("streamTime");
-	const static int id_status = val_id("status");
-	const static int id_userData = val_id("userData");
-	const static int id_streamCallback = val_id("streamCallback");
-	const static int id_inputParameters = val_id("inputParameters");
-	const static int id_outputParameters = val_id("outputParameters");
-	const static int id_nChannels = val_id("nChannels");
-	const static int id_formatValue = val_id("formatValue");
-	const static int id_threadCallbackRun = val_id("threadCallbackRun");
+	value rtAudioHandle = ((_RtAudio_CallbackInfoData*) data)->rtAudioHandle;
+	value hxRtAudioInstance = ((_RtAudio_CallbackInfoData*) data)->hxRtAudioInstance;
 
-	value rtAudioHandle = (value) data;
+	alloc_field(hxRtAudioInstance, id_status, alloc_int(status));
 
-	value outAry = val_field(rtAudioHandle, id_outputBuffer);
-	value inAry = val_field(rtAudioHandle, id_inputBuffer);
-	int format = val_field_numeric(rtAudioHandle, id_formatValue);
-	
-	alloc_field(rtAudioHandle, id_status, alloc_int(status));
-	
-	gc_enter_blocking();
-	
+	value outAry = val_field(hxRtAudioInstance, id_outputBuffer);
+	value inAry = val_field(hxRtAudioInstance, id_inputBuffer);
+	int format = val_field_numeric(hxRtAudioInstance, id_formatValue);
+
+
 	if (inputBuffer){
-		unsigned int inAryLen = nFrames * val_field_numeric(val_field(rtAudioHandle, id_inputParameters), id_nChannels);
-		
+		unsigned int inAryLen = nFrames * val_field_numeric(val_field(hxRtAudioInstance, id_inputParameters), id_nChannels);
+
 		switch(format) {
 			case RTAUDIO_SINT8:
 			{
@@ -114,16 +125,15 @@ int callback
 				;
 		}
 	}
-	
-	gc_exit_blocking();
-	
-	int returnVal = val_int(val_ocall0(rtAudioHandle, id_threadCallbackRun));
-	
-	gc_enter_blocking();
-	
+
+	MySemaphore* semaphoreWait = (MySemaphore*) val_data(val_field(hxRtAudioInstance, id_semaphoreWait));
+	semaphoreWait->Set();
+	MySemaphore* semaphoreReady = (MySemaphore*) val_data(val_field(hxRtAudioInstance, id_semaphoreReady));
+	semaphoreReady->Wait();
+
 	if (outputBuffer){
-		unsigned int outAryLen = nFrames * val_field_numeric(val_field(rtAudioHandle, id_outputParameters), id_nChannels);
-		
+		unsigned int outAryLen = nFrames * val_field_numeric(val_field(hxRtAudioInstance, id_outputParameters), id_nChannels);
+
 		switch(format) {
 			case RTAUDIO_SINT8:
 			{
@@ -170,11 +180,29 @@ int callback
 				;
 		}
 	}
-	
-	gc_exit_blocking();
-	
-	return returnVal;
+
+	return val_field_numeric(hxRtAudioInstance, id_lastStreamCallBackResult);
 }
+
+value _RtAudio_waitForSoundData(value hxRtAudioInstance) {
+	MySemaphore* sem = (MySemaphore*) val_data(val_field(hxRtAudioInstance, id_semaphoreWait));
+
+	//gc_enter_blocking();
+
+	sem->Wait();
+
+	//gc_exit_blocking();
+
+	return alloc_null();
+}
+DEFINE_PRIM(_RtAudio_waitForSoundData,1);
+
+value _RtAudio_setReady(value hxRtAudioInstance) {
+	MySemaphore* sem = (MySemaphore*) val_data(val_field(hxRtAudioInstance, id_semaphoreReady));
+	sem->Set();
+	return alloc_null();
+}
+DEFINE_PRIM(_RtAudio_setReady,1);
 
 value _RtAudio_getCompiledApi() {
 	std::vector< RtAudio::Api > apis;
@@ -190,11 +218,18 @@ DEFINE_PRIM(_RtAudio_getCompiledApi,0);
 
 
 DEFINE_KIND(_RtAudio);
+DEFINE_KIND(_MySemaphore);
 
 void delete_RtAudio(value a) {
 	RtAudio* rtAudio = (RtAudio*) val_data(a);
 	
 	delete rtAudio;
+}
+
+void delete_MySemaphore(value a) {
+	MySemaphore* sem = (MySemaphore*) val_data(a);
+
+	delete sem;
 }
 
 value _RtAudio_new(value a) {	
@@ -348,8 +383,8 @@ value _RtAudio_showWarnings(value a,value b) {
 }
 DEFINE_PRIM(_RtAudio_showWarnings,2);
 
-value _RtAudio_openStream(value a,value b,value c) {
-	RtAudio* rtAudio = (RtAudio*) val_data(a);
+value _RtAudio_openStream(value rtAudioHandle,value hxRtAudioInstance,value c) {
+	RtAudio* rtAudio = (RtAudio*) val_data(rtAudioHandle);
 	
 	value outputParametersHandle = val_field(c, val_id("outputParameters"));
 	RtAudio::StreamParameters * outputParameters=NULL;
@@ -382,6 +417,10 @@ value _RtAudio_openStream(value a,value b,value c) {
 		options->streamName = val_string(val_field(optionsHandle, val_id("streamName")));
 		options->priority = val_field_numeric(optionsHandle, val_id("priority"));
 	}
+
+	_RtAudio_CallbackInfoData* data = new _RtAudio_CallbackInfoData(); //TODO free mem when closed
+	data->rtAudioHandle = rtAudioHandle;
+	data->hxRtAudioInstance = hxRtAudioInstance;
 	
 	try {
 		rtAudio->openStream(
@@ -391,15 +430,25 @@ value _RtAudio_openStream(value a,value b,value c) {
 			sampleRate,
 			&bufferFrames,
 			&callback,
-			b,
+			data,
 			options
 		);
 	} catch (RtError &error) {
+		delete data;
+
 		error.printMessage();
 		//std::exit(EXIT_FAILURE); // need case here
 	}
-	
-	alloc_field(b, val_id("bufferFrames"), alloc_int(bufferFrames));
+
+	value semaphoreWait = alloc_abstract(_MySemaphore, new MySemaphore());
+	val_gc(semaphoreWait, delete_MySemaphore);
+	alloc_field(hxRtAudioInstance, id_semaphoreWait, semaphoreWait);
+
+	value semaphoreReady = alloc_abstract(_MySemaphore, new MySemaphore());
+	val_gc(semaphoreReady, delete_MySemaphore);
+	alloc_field(hxRtAudioInstance, id_semaphoreReady, semaphoreReady);
+
+	alloc_field(hxRtAudioInstance, val_id("bufferFrames"), alloc_int(bufferFrames));
 	
 	if(options){
 		alloc_field(optionsHandle, val_id("numberOfBuffers"), alloc_int(options->numberOfBuffers));

@@ -2,6 +2,6 @@
     <user name="andyli"/>
     <tag v="cpp"/>
     <tag v="audio"/>
-    <description>haXe binding to RtAudio, for cross-platform real-time audio input/output.</description>
-    <version name="4.0.7.0">First release.</version>
+    <description>Haxe binding to RtAudio, for cross-platform real-time audio input/output.</description>
+    <version name="4.0.11.0">Haxe 2.10 fix. Updated to RtAudio 4.0.11.</version>
 </project>

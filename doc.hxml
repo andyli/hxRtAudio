@@ -1,6 +1,6 @@
 -xml doc.xml
 -cpp bin
--main Main
--lib hxcpp
+-main rtAudio.tests.Testall
+-cp src
 
--cmd chxdoc -o doc --title="hxRtAudio" --subtitle="haXe binding to RtAudio, for cross-platform real-time audio input/output." -f haxe -f cpp --ignoreRoot=true doc.xml
+-cmd haxelib run chxdoc compile -o doc --title="hxRtAudio" --subtitle="Haxe binding to RtAudio, for cross-platform real-time audio input/output." -f haxe -f cpp -f sys --ignoreRoot=true doc.xml

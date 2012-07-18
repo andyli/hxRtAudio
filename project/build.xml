@@ -1,7 +1,31 @@
 <xml>
 	<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
 	
-	<set name="RTAUDIO_DIR" value="rtaudio-4.0.7" />
+	<set name="RTAUDIO_DIR" value="rtaudio-4.0.11" />
+	
+	<files id="_runtime" dir="${HXCPP}">
+		<file name = "src/hx/Anon.cpp"/>
+		<file name = "src/hx/Boot.cpp"/>
+		<file name = "src/hx/CFFI.cpp"/>
+		<file name = "src/hx/Date.cpp"/>
+		<file name = "src/hx/GC.cpp"/>
+		<file name = "src/hx/GCInternal.cpp"/>
+		<file name = "src/hx/Hash.cpp"/>
+		<file name = "src/hx/Interface.cpp"/>
+		<file name = "src/hx/Lib.cpp"/>
+		<file name = "src/hx/Object.cpp"/>
+		<file name = "src/hx/StdLibs.cpp"/>
+		<file name = "src/hx/Debug.cpp"/>
+		<file name = "src/hx/Thread.cpp"/>
+		<file name = "src/hx/RunLibs.cpp" if="static"/>
+		
+		<file name = "src/Array.cpp"/>
+		<file name = "src/Class.cpp"/>
+		<file name = "src/Dynamic.cpp"/>
+		<file name = "src/Enum.cpp"/>
+		<file name = "src/Math.cpp"/>
+		<file name = "src/String.cpp"/>
+	</files>
 	
 	<files id="rt_Files">
 		<file name="api.cpp"/>
@@ -11,6 +35,7 @@
 		<file name="${RTAUDIO_DIR}/include/asiodrivers.cpp" if="windows" />
 		<file name="${RTAUDIO_DIR}/include/asiolist.cpp" if="windows" />
 		<file name="${RTAUDIO_DIR}/include/iasiothiscallresolver.cpp" if="windows" />
+		
 		
 		<compilerflag value = "-I${RTAUDIO_DIR}" />
 		<compilerflag value = "-I${RTAUDIO_DIR}/include" />
@@ -23,7 +48,11 @@
 		<compilerflag value = "-D__WINDOWS_ASIO__" if="windows"/>
 
 		<compilerflag value = "-D__MACOSX_CORE__" if="macos"/>
+		
+		<!-- 
 		<compilerflag value = "-D__UNIX_JACK__" if="macos"/>
+		<compilerflag value = "-I/usr/local/Cellar/jack/1.9.7/include" if="macos"/>
+		 -->
 		
 		<compilerflag value = "-D__LINUX_OSS__" if="linux"/>
 		<compilerflag value = "-D__LINUX_ALSA__" if="linux"/>
@@ -31,6 +60,7 @@
 	</files>
 	
 	<target id="hxRtAudio.ndll" tool="linker" toolid="dll" output="hxRtAudio">
+		<!-- <files id="_runtime"/> -->
 		<files id="rt_Files"/>
 		<ext value=".ndll"/>
 		<outdir name="../ndll/${BINDIR}"/>
@@ -52,7 +82,7 @@
 
 		
 		<lib name="-lpthread" if="macos"/>
-		<lib name="-ljack" if="macos"/>
+		<!-- <lib name="-ljack" if="macos"/> -->
 		<vflag name="-framework" value="CoreAudio" if="macos"/>
 		<vflag name="-framework" value="CoreFoundation" if="macos"/>
 		

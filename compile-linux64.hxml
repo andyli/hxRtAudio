@@ -5,6 +5,7 @@
 
 -cpp bin64
 -main rtAudio.tests.Testall
+-cp src
 -lib hxRtAudio
 -D HXCPP_MULTI_THREADED
 -D HXCPP_M64
