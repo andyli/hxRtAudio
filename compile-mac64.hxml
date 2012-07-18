@@ -1,7 +1,4 @@
-#-cmd cd project
-#-cmd rm -rf obj
-#-cmd haxelib run hxcpp build.xml -DHXCPP_M64
-#-cmd cd ..
+#-cmd (cd project && haxelib run hxcpp build.xml -DHXCPP_M64 && cd ..)
 
 -cpp bin64
 -main rtAudio.tests.Testall
@@ -9,6 +6,6 @@
 #-lib hxRtAudio
 -D HXCPP_M64
 
--cmd cp ndll/Mac64/*.* bin64
+#-cmd cp ndll/Mac64/*.* bin64
 
--cmd (cd bin64 && ./Testall 2 44100)
+#-cmd (cd bin64 && ./Testall 2 44100 && cd ..)
