@@ -6747,7 +6747,13 @@ bool RtApiPulse::probeDeviceOpen( unsigned int device, StreamMode mode,
 #include <sys/ioctl.h>
 #include <unistd.h>
 #include <fcntl.h>
+
+#ifndef HXCPP_M64
+#include <sys/soundcard.h>
+#else
 #include "soundcard.h"
+#endif
+
 #include <errno.h>
 #include <math.h>
 
