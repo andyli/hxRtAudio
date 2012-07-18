@@ -9,8 +9,7 @@ h2. Supported platforms
 * Windows(32bit)
 ** Compiled APIs: *DirectSound*, *ASIO*
 * Mac(32/64bit)
-** Compiled APIs: *CoreAudio*, *Jack*
-** You may have to install "Jack OSX":http://www.jackosx.com/ (even if you're not using Jack API).
+** Compiled APIs: *CoreAudio*
 * Linux(32/64bit)
 ** Compiled APIs: *ALSA*, *OpenSound*, *Jack*
 ** For OpenSound: "Instruction for configuring OpenSound on Ubuntu":https://help.ubuntu.com/community/OpenSound
