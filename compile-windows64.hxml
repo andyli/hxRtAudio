@@ -1,0 +1,11 @@
+#-cmd (cd project && haxelib run hxcpp build.xml -DHXCPP_M64 && cd ..)
+
+-cpp bin64
+-main rtAudio.tests.Testall
+-cp src
+#-lib hxRtAudio
+-D HXCPP_M64
+
+#-cmd xcopy /e /i /y "ndll\Windows64\*.*" "bin64"
+
+#-cmd (cd bin64 && Testall.exe 2 44100 && cd ..)

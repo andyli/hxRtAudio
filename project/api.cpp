@@ -51,6 +51,10 @@ const static int id_semaphoreWait = val_id("semaphoreWait");
 const static int id_semaphoreReady = val_id("semaphoreReady");
 const static int id_lastStreamCallBackResult = val_id("lastStreamCallBackResult");
 
+const static value val_int_0 = alloc_int(0);
+const static value val_int_1 = alloc_int(1);
+const static value val_int_2 = alloc_int(2);
+
 struct _RtAudio_CallbackInfoData {
 	value rtAudioHandle;
 	value hxRtAudioInstance;
@@ -69,7 +73,12 @@ int callback
 	value rtAudioHandle = ((_RtAudio_CallbackInfoData*) data)->rtAudioHandle;
 	value hxRtAudioInstance = ((_RtAudio_CallbackInfoData*) data)->hxRtAudioInstance;
 
-	alloc_field(hxRtAudioInstance, id_status, alloc_int(status));
+	if (status == 0)
+		alloc_field(hxRtAudioInstance, id_status, val_int_0);
+	else if (status == 1)
+		alloc_field(hxRtAudioInstance, id_status, val_int_1);
+	else if (status == 2)
+		alloc_field(hxRtAudioInstance, id_status, val_int_2);
 
 	value outAry = val_field(hxRtAudioInstance, id_outputBuffer);
 	value inAry = val_field(hxRtAudioInstance, id_inputBuffer);
