@@ -12,9 +12,7 @@
 package rtAudio.tests;
 
 import cpp.Lib;
-import cpp.Sys;
-import cpp.io.File;
-import cpp.io.FileInput;
+import sys.io.*;
 import haxe.io.Eof;
 import rtAudio.RtAudio;
 import rtAudio.Api;

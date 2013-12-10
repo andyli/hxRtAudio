@@ -48,7 +48,7 @@ enum RtAudioFormat {
 	RTAUDIO_SINT16;
 	
 	/**
-	 * Lower 3 bytes of 32-bit signed integer. Not supported in hxRtAudio.
+	 * 24-bit signed integer. Not supported in hxRtAudio.
 	 */
 	RTAUDIO_SINT24;
 	

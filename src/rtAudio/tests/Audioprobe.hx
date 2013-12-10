@@ -10,7 +10,6 @@
 package rtAudio.tests;
 
 import cpp.Lib;
-import cpp.Sys;
 import rtAudio.RtAudio;
 import rtAudio.Api;
 import rtAudio.RtAudioFormat;
@@ -88,14 +87,15 @@ class Audioprobe
 	
 	static function apiMap(api:Api):String {
 		return switch(api) {
+			case Api.UNSPECIFIED: "UNSPECIFIED";
 			case Api.MACOSX_CORE: "OS-X Core Audio";
 			case Api.WINDOWS_ASIO: "Windows ASIO";
 			case Api.WINDOWS_DS: "Windows Direct Sound";
 			case Api.UNIX_JACK: "Jack Client";
 			case Api.LINUX_ALSA: "Linux ALSA";
+			case Api.LINUX_PULSE: "Linux PulseAudio";
 			case Api.LINUX_OSS: "Linux OSS";
 			case Api.RTAUDIO_DUMMY: "RtAudio Dummy";
-			default: throw "unknown api";
 		}
 	}
 }

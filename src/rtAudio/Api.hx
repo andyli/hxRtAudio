@@ -40,6 +40,11 @@ enum Api {
 	 * The Advanced Linux Sound Architecture API.
 	 */
 	LINUX_ALSA;
+
+	/**
+	 * The Linux PulseAudio API.
+	 */
+	LINUX_PULSE;
 	
 	/**
 	 * The Linux Open Sound System API.
