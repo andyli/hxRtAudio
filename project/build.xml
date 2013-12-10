@@ -1,7 +1,7 @@
 <xml>
 	<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
 	
-	<set name="RTAUDIO_DIR" value="rtaudio-4.0.11" />
+	<set name="RTAUDIO_DIR" value="rtaudio-4.0.12" />
 	
 	<files id="rt_Files">
 		<file name="api.cpp"/>

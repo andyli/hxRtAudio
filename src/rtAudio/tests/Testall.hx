@@ -100,7 +100,7 @@ class Testall
 	{	
 		var bufferFrames:Int, fs:Int, oDevice:Int, iDevice:Int, iOffset:Int = 0, oOffset:Int = 0;
 		var stdin = Sys.stdin();
-		
+
 		var argv = Sys.args();
 		var argc = argv.length;
 
